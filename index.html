@@ -105,7 +105,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/hibernate/" style="font-size: 10px;">hibernate</a> <a href="/tags/jdbctemplate/" style="font-size: 10px;">jdbctemplate</a> <a href="/tags/spring/" style="font-size: 10px;">spring</a>
+						<a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/hibernate/" style="font-size: 10px;">hibernate</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/jdbctemplate/" style="font-size: 10px;">jdbctemplate</a> <a href="/tags/serializable/" style="font-size: 10px;">serializable</a> <a href="/tags/spring/" style="font-size: 10px;">spring</a> <a href="/tags/筛选法/" style="font-size: 10px;">筛选法</a> <a href="/tags/米勒拉宾算法/" style="font-size: 10px;">米勒拉宾算法</a> <a href="/tags/静态内部类/" style="font-size: 10px;">静态内部类</a>
 					</div>
 				</section>
 				
@@ -185,6 +185,240 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-Java中的静态内部类" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/05/19/Java中的静态内部类/" class="article-date">
+  	<time datetime="2015-05-19T04:17:00.000Z" itemprop="datePublished">2015-05-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/05/19/Java中的静态内部类/">Java中的静态内部类</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<p>在学静态内部类的时候产生了一个疑问，静态内部类到底存放在哪里了？</p>
+<hr>
+<p>Java中的内存有一块地址叫静态代码区所有静态类都是放在这里的，静态类随JVM启动后就在那，不会说程序停止了，它就被垃圾回收器回收，而new是实例化的命令，它会在java中的内存中的堆区，创建一个对象，注意它们的位置，一个是在<font color="red">静态代码区</font>；一个是在<font color="red">堆区</font>，new出来的对象，一旦程序运行完，它就会被垃圾回收器回收。</p>
+<h3 id="下面解释下静态代码区">下面解释下静态代码区</h3><p>首先看下方法区（代码区）</p>
+<p>方法区是系统分配的一个内存逻辑区域，是JVM在装载类文件时，用于存储类型信息的(类的描述信息)。</p>
+<p>方法区存放的信息包括：</p>
+<h4 id="1-_类的基本信息：">1. 类的基本信息：</h4><ul>
+<li>每个类的全限定名每个类的直接超类的全限定名(可约束类型转换)</li>
+<li>该类是类还是接口</li>
+<li>该类型的访问修饰符</li>
+<li>直接超接口的全限定名的有序列表<h4 id="2-_已装载类的详细信息：">2. 已装载类的详细信息：</h4></li>
+<li>运行时常量池：<br>在方法区中，每个类型都对应一个常量池，存放该类型所用到的所有常量，常量池中存储了诸如文字字符串、final变量值、类名和方法名常量。它们以数组形式通过索引被访问，是外部调用与类联系及类型对象化的桥梁。（存的可能是个普通的字符串，然后经过常量池解析，则变成指向某个类的引用）</li>
+<li>字段信息：<br>字段信息存放类中声明的每一个字段的信息，包括字段的名、类型、修饰符。字段名称指的是类或接口的实例变量或类变量，字段的描述符是一个指示字段的类型的字符串，如private A a=null;则a为字段名，A为描述符，private为修饰符</li>
+<li>方法信息：<br>类中声明的每一个方法的信息，包括方法名、返回值类型、参数类型、修饰符、异常、方法的字节码。(在编译的时候，就已经将方法的局部变量、操作数栈大小等确定并存放在字节码中，在装载的时候，随着类一起装入方法区。)</li>
+</ul>
+<p>在运行时，JVM从常量池中获得符号引用，然后在运行时解析成引用项的实际地址，最后通过常量池中的全限定名、方法和字段描述符，把当前类或接口中的代码与其它类或接口中的代码联系起来。</p>
+<ul>
+<li>静态变量：这个没什么好说的，就是类变量，类的所有实例都共享，我们只需知道，在方法区有个静态区，静态区专门存放静态变量和静态块。</li>
+<li>到类classloader的引用：到该类的类装载器的引用。</li>
+<li>到类class的引用：虚拟机为每一个被装载的类型创建一个class实例，用来代表这个被装载的类。</li>
+</ul>
+<p>由此我们可以知道反射的基础：</p>
+<p>在装载类的时候，加入方法区中的所有信息，最后都会形成Class类的实例，代表这个被装载的类。方法区中的所有的信息，都是可以通过这个Class类对象反射得到。我们知道对象是类的实例，类是相同结构的对象的一种抽象。同类的各个对象之间，其实是拥有相同的结构（属性），拥有相同的功能（方法），各个对象的区别只在于属性值的不同。<br>    同样的，我们所有的类，其实都是Class类的实例，他们都拥有相同的结构—–Field数组、Method数组。而各个类中的属性都是Field属性的一个具体属性值，方法都是Method属性的一个具体属性值。</p>
+<p>在运行时，JVM从常量池中获得符号引用，然后在运行时解析成引用项的实际地址，最后通过常量池中的全限定名、方法和字段描述符，把当前类或接口中的代码与其它类或接口中的代码联系起来。</p>
+<h3 id="参考资料：">参考资料：</h3><ol>
+<li><a href="http://zhidao.baidu.com/link?url=fPFHee1b0yBDxwi3-FCjhkliA-qtprLjqtcqDiTZM5k-G3Q3YynS4kK5Jj5C1PvTSGnBSr52-9KjhLYjQnZx1_" target="_blank" rel="external">http://zhidao.baidu.com/link?url=fPFHee1b0yBDxwi3-FCjhkliA-qtprLjqtcqDiTZM5k-G3Q3YynS4kK5Jj5C1PvTSGnBSr52-9KjhLYjQnZx1_</a></li>
+<li><a href="http://blog.csdn.net/peterwin1987/article/details/7571808" target="_blank" rel="external">http://blog.csdn.net/peterwin1987/article/details/7571808</a></li>
+</ol>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/">JVM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/静态内部类/">静态内部类</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Java/">Java</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-关于判断素数的一些算法" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/05/16/关于判断素数的一些算法/" class="article-date">
+  	<time datetime="2015-05-16T06:56:00.000Z" itemprop="datePublished">2015-05-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/05/16/关于判断素数的一些算法/">关于判断素数的一些算法</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<p>最近在hdu上A题</p>
+<p>碰到些素数问题，记录下看到的算法。</p>
+<hr>
+<h3 id="一、筛选法">一、筛选法</h3><p>题目:<a href="http://acm.hdu.edu.cn/showproblem.php?pid=2136" target="_blank" rel="external">http://acm.hdu.edu.cn/showproblem.php?pid=2136</a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.BufferedReader;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStreamReader;</span><br><span class="line"><span class="keyword">import</span> java.io.StreamTokenizer;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException</span><br><span class="line">    </span>&#123;</span><br><span class="line">        StreamTokenizer st = <span class="keyword">new</span> StreamTokenizer(<span class="keyword">new</span> BufferedReader(</span><br><span class="line">                <span class="keyword">new</span> InputStreamReader(System.in)));</span><br><span class="line">        <span class="keyword">int</span>[] arr = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">1000001</span>];</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> temp;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt; <span class="number">1000000</span>; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (arr[i] == <span class="number">0</span>)<span class="comment">//只用判断不被前面“筛选掉的数字”</span></span><br><span class="line">            &#123;</span><br><span class="line">                temp = i;</span><br><span class="line">                <span class="keyword">while</span> (temp &lt; <span class="number">1000000</span>)<span class="comment">//这里就是筛选数字，把i的整数倍的数字都挖掉</span></span><br><span class="line">                &#123;                     <span class="comment">//因为肯定有&lt;span&gt;&lt;/span&gt;因子i，则一定不是素数。</span></span><br><span class="line">                    arr[temp] = count;<span class="comment">//此处的赋值是因为题目的要求有点小改变，筛选法只用分别出素数和非素数</span></span><br><span class="line">                    temp = temp + i;</span><br><span class="line">                &#125;</span><br><span class="line">                count++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> n;</span><br><span class="line">        <span class="keyword">while</span> (st.nextToken() != StreamTokenizer.TT_EOF)</span><br><span class="line">        &#123;</span><br><span class="line">            n = (<span class="keyword">int</span>) st.nval;</span><br><span class="line">            System.out.println(arr[n]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>思想很简单：</p>
+<ol>
+<li>先将1挖掉(因为1不是素数)。</li>
+<li>用2去除它后面的各个数，把能被2 整除的数挖掉，即把2的倍数挖掉。</li>
+<li>用3去除它后面的各数，把3的倍数挖掉。</li>
+<li>分别用5…各数作为除数去除这些数以后的各数。<br>上述操作需要一个很大的容器去装载所有数的集合，只要满足上述条件，即2的倍数大于1的全部置0，3的倍数大于1的全部置0，4的倍数大于1的全部置0.。。。一直到这个数据集合的末尾，这样一来不为0的数就是素数了，然后按下标在里面进行查找就好了</li>
+</ol>
+<h3 id="二、米勒拉宾算法">二、米勒拉宾算法</h3><p>算法思想：<a href="http://www.cnblogs.com/skyivben/archive/2010/07/10/1775001.html" target="_blank" rel="external">http://www.cnblogs.com/skyivben/archive/2010/07/10/1775001.html</a></p>
+<p>看了一下看不懂，记录下有这种算法思想。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/筛选法/">筛选法</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/米勒拉宾算法/">米勒拉宾算法</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/ACM/">ACM</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-java类实现serializable有什么好处或意义" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/05/08/java类实现serializable有什么好处或意义/" class="article-date">
+  	<time datetime="2015-05-08T10:34:00.000Z" itemprop="datePublished">2015-05-08</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/05/08/java类实现serializable有什么好处或意义/">java类实现serializable有什么好处或意义</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>一个对象序列化的接口，一个类只有实现了Serializable接口，它的对象才是可序列化的。因此如果要序列化某些类的对象，这些类就必须实现Serializable接口。而实际上，Serializable是一个空接口，没有什么具体内容，它的目的只是简单的标识一个类的对象可以被序列化。 好处： </p>
+<ul>
+<li><p>比如说你的内存不够用了，那计算机就要将内存里面的一部分对象暂时的保存到硬盘中，等到要用的时候再读入到内存中，硬盘的那部分存储空间就是所谓的虚拟内存。在比如过你要将某个特定的对象保存到文件中，我隔几天在把它拿出来用，那么这时候就要实现Serializable接口； </p>
+</li>
+<li><p>在进行java的Socket编程的时候，你有时候可能要传输某一类的对象，那么也就要实现Serializable接口；最常见的你传输一个字符串，它是JDK里面的类，也实现了Serializable接口，所以可以在网络上传输。</p>
+</li>
+<li><p>如果要通过远程的方法调用（RMI）去调用一个远程对象的方法，如在计算机A中调用另一台计算机B的对象的方法，那么你需要通过JNDI服务获取计算机B目标对象的引用，将对象从B传送到A，就需要实现序列化接口。</p>
+</li>
+</ul>
+<p>例如:</p>
+<p>在web 开发中，如果对象被保存在了Session 中，tomcat 在重启时要把Session 对象序列化到硬盘，这个对象就必须实现Serializable接口。</p>
+<p>如果对象要经过分布式系统 进行网络传输或通过rmi 等远程调用，这就需要在网络上传输对象，被传输的对象就必 须实现Serializable接口。</p>
+<p>记录一下知识盲点。</p>
+<h3 id="参考资料">参考资料</h3><ol>
+<li><a href="http://zhidao.baidu.com/link?url=2jX9tXXp-hMA5AcFstKTocpMq1oKdxA7Baed81ypgz7sCMC5DU192v5hIoZe-xSD" target="_blank" rel="external">http://zhidao.baidu.com/link?url=2jX9tXXp-hMA5AcFstKTocpMq1oKdxA7Baed81ypgz7sCMC5DU192v5hIoZe-xSD</a>…</li>
+</ol>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/serializable/">serializable</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Java/">Java</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-spring的jdbctemplate与hibernate" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -213,7 +447,17 @@
       
         <p>最近在看spring，发现jdbctemplate也能很好地对数据库CRUD，那么产生了如摘要的疑问，在此记录一下，红色字体为重点。</p>
 <ul>
-<li>JDBCTemplate是Spring对jdbc的封装，但sql还是得自己写，一旦要写sql，则会增加灵活和复杂性，当然也<font color="red">不利于跨数据库</font>（毕竟每个数据库的实现产品的sql也不竟相同）。
+<li>JDBCTemplate是Spring对jdbc的封装，但sql还是得自己写，一旦要写sql，则会增加灵活和复杂性，当然也<font color="red">不利于跨数据库</font>（毕竟每个数据库的实现产品的sql也不竟相同）。<br>若使用hibernate则不用关心底层的数据库是哪个数据库，在编程方面，也更<font color="red">对象化了</font>，比如 save(Object obj),我们操作的都是对象。hibernate也利用了<font color="red">缓存</font>产生实现与数据库的读取操作，<font color="red">提高性能</font>太多了。</li>
+<li>现在许多项目都采用hibernateTemplate和JDBCTemplate<font color="red">混用</font>的方式<br> HibernateTemplate一般是为了<font color="red">加快开发效率</font>，还有就是使用Hibernate的时候,更简洁,更便利,而<font color="red">统一的声明事务</font>,又让本来就已经很简洁的Hibernate对事务的处理,大大简化 但任何事务都有两面性,在带来大量便捷的同时,Hibernate也给我们留下了一点小小的遗憾,比如众所周知的,<font color="red">在处理大批量数据查询的时候,Hibernate的查询效率,是不尽人意的,有人做过测试,在高并发查询的时候,hibernate的查询效率,仅仅相当于使用jdbc效率7成左右</font>,这对于对速度有着很高要求的互联网应用来说,不能不说是悲剧。<br> Hibernate在做批量操作时，效率不是很理想。所以现在采用JDBCTemplate和Hibernate混用，这时有几个注意事项:   </li>
+</ul>
+<ol>
+<li>如果采用JDBCTemplate的部分只涉及到查询，则可以使用Hibernate的应用缓存，即二级缓存。 </li>
+<li>如果采用JDBCTemplate的部分涉及到对数据库的更新操作,即增，删，改.则不能开启Hibernate的二级缓存，如果系统有缓存的需要，我觉得可以自己在逻辑层实现缓存.Java的缓存方案还是很多的。</li>
+<li>在使用Spring做为容器的系统中，混用JDBCTemplate和Hibernate，事务管理请统一使用HibernateTransactionManager，前提是JDBCTemplate和Hibernate共用一个DataSource.</li>
+</ol>
+<p>在此我只是对资料的汇合。</p>
+<h3 id="参考资料：">参考资料：</h3><p>1.<a href="http://bbs.csdn.net/topics/330256418" target="_blank" rel="external">http://bbs.csdn.net/topics/330256418</a><br>2.<a href="http://zhidao.baidu.com/link?url=UMlaR3oPG9mtIEh748IyUlZhWILd2RIA9AxVPbd_BeUuL-cF0184pQQwzm_AimEYS6y5og38skL4xWHoX11bDq" target="_blank" rel="external">http://zhidao.baidu.com/link?url=UMlaR3oPG9mtIEh748IyUlZhWILd2RIA9AxVPbd_BeUuL-cF0184pQQwzm_AimEYS6y5og38skL4xWHoX11bDq</a></p>
+
       
     </div>
     
@@ -225,11 +469,11 @@
 	</div>
 
       
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Web开发/">Web开发</a>
+	</div>
 
-      
-        <p class="article-more-link">
-          <a  href="/2015/05/06/spring的jdbctemplate与hibernate/#more">more >></a>
-        </p>
+
       
       <div class="clearfix"></div>
     </div>

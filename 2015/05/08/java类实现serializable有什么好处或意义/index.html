@@ -3,17 +3,24 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Tag: spring | Zhangtk&#39;s Blog</title>
+  <title>java类实现serializable有什么好处或意义 | Zhangtk&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="HDU&apos;s Zhangtk">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Zhangtk's Blog">
-<meta property="og:url" content="http://zhangtk.com/tags/spring/index.html">
+  <meta name="description" content="一个对象序列化的接口，一个类只有实现了Serializable接口，它的对象才是可序列化的。因此如果要序列化某些类的对象，这些类就必须实现Serializable接口。而实际上，Serializable是一个空接口，没有什么具体内容，它的目的只是简单的标识一个类的对象可以被序列化。 好处： 
+
+比如说你的内存不够用了，那计算机就要将内存里面的一部分对象暂时的保存到硬盘中，等到要用的时候再读入到内存">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java类实现serializable有什么好处或意义">
+<meta property="og:url" content="http://zhangtk.com/2015/05/08/java类实现serializable有什么好处或意义/index.html">
 <meta property="og:site_name" content="Zhangtk's Blog">
-<meta property="og:description" content="HDU&apos;s Zhangtk">
+<meta property="og:description" content="一个对象序列化的接口，一个类只有实现了Serializable接口，它的对象才是可序列化的。因此如果要序列化某些类的对象，这些类就必须实现Serializable接口。而实际上，Serializable是一个空接口，没有什么具体内容，它的目的只是简单的标识一个类的对象可以被序列化。 好处： 
+
+比如说你的内存不够用了，那计算机就要将内存里面的一部分对象暂时的保存到硬盘中，等到要用的时候再读入到内存">
+<meta property="og:updated_time" content="2015-07-30T11:02:25.381Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Zhangtk's Blog">
-<meta name="twitter:description" content="HDU&apos;s Zhangtk">
+<meta name="twitter:title" content="java类实现serializable有什么好处或意义">
+<meta name="twitter:description" content="一个对象序列化的接口，一个类只有实现了Serializable接口，它的对象才是可序列化的。因此如果要序列化某些类的对象，这些类就必须实现Serializable接口。而实际上，Serializable是一个空接口，没有什么具体内容，它的目的只是简单的标识一个类的对象可以被序列化。 好处： 
+
+比如说你的内存不够用了，那计算机就要将内存里面的一部分对象暂时的保存到硬盘中，等到要用的时候再读入到内存">
   
     <link rel="alternative" href="/atom.xml" title="Zhangtk&#39;s Blog" type="application/atom+xml">
   
@@ -183,57 +190,131 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-java类实现serializable有什么好处或意义" class="article article-type-post" itemscope itemprop="blogPost">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2015" class="archive-year">2015</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2015/05/06/spring的jdbctemplate与hibernate/" class="archive-article-date">
-  	<time datetime="2015-05-06T07:50:00.000Z" itemprop="datePublished">5月 6</time>
+    <div class="article-meta">
+      <a href="/2015/05/08/java类实现serializable有什么好处或意义/" class="article-date">
+  	<time datetime="2015-05-08T10:34:00.000Z" itemprop="datePublished">2015-05-08</time>
 </a>
-        </div>
-    	 
+    </div>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/05/06/spring的jdbctemplate与hibernate/">spring的jdbctemplate与hibernate</a>
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      java类实现serializable有什么好处或意义
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+      </header>
+      
+      <div class="article-info article-info-post">
+        
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hibernate/">hibernate</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jdbctemplate/">jdbctemplate</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spring/">spring</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/serializable/">serializable</a></li></ul>
 	</div>
 
-          
+        
 	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/Web开发/">Web开发</a>
+	<a class="article-category-link" href="/categories/Java/">Java</a>
 	</div>
 
 
-        </div>
         <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
+      </div>
+      
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>一个对象序列化的接口，一个类只有实现了Serializable接口，它的对象才是可序列化的。因此如果要序列化某些类的对象，这些类就必须实现Serializable接口。而实际上，Serializable是一个空接口，没有什么具体内容，它的目的只是简单的标识一个类的对象可以被序列化。 好处： </p>
+<ul>
+<li><p>比如说你的内存不够用了，那计算机就要将内存里面的一部分对象暂时的保存到硬盘中，等到要用的时候再读入到内存中，硬盘的那部分存储空间就是所谓的虚拟内存。在比如过你要将某个特定的对象保存到文件中，我隔几天在把它拿出来用，那么这时候就要实现Serializable接口； </p>
+</li>
+<li><p>在进行java的Socket编程的时候，你有时候可能要传输某一类的对象，那么也就要实现Serializable接口；最常见的你传输一个字符串，它是JDK里面的类，也实现了Serializable接口，所以可以在网络上传输。</p>
+</li>
+<li><p>如果要通过远程的方法调用（RMI）去调用一个远程对象的方法，如在计算机A中调用另一台计算机B的对象的方法，那么你需要通过JNDI服务获取计算机B目标对象的引用，将对象从B传送到A，就需要实现序列化接口。</p>
+</li>
+</ul>
+<p>例如:</p>
+<p>在web 开发中，如果对象被保存在了Session 中，tomcat 在重启时要把Session 对象序列化到硬盘，这个对象就必须实现Serializable接口。</p>
+<p>如果对象要经过分布式系统 进行网络传输或通过rmi 等远程调用，这就需要在网络上传输对象，被传输的对象就必 须实现Serializable接口。</p>
+<p>记录一下知识盲点。</p>
+<h3 id="参考资料">参考资料</h3><ol>
+<li><a href="http://zhidao.baidu.com/link?url=2jX9tXXp-hMA5AcFstKTocpMq1oKdxA7Baed81ypgz7sCMC5DU192v5hIoZe-xSD" target="_blank" rel="external">http://zhidao.baidu.com/link?url=2jX9tXXp-hMA5AcFstKTocpMq1oKdxA7Baed81ypgz7sCMC5DU192v5hIoZe-xSD</a>…</li>
+</ol>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/05/16/关于判断素数的一些算法/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          关于判断素数的一些算法
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/05/06/spring的jdbctemplate与hibernate/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">spring的jdbctemplate与hibernate</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="java类实现serializable有什么好处或意义" data-title="java类实现serializable有什么好处或意义" data-url="http://zhangtk.com/2015/05/08/java类实现serializable有什么好处或意义/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"zhangtk"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
 
 </div>
       <footer id="footer">
@@ -259,9 +340,9 @@
 		mathjax: true,
 		animate: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false
 	}
