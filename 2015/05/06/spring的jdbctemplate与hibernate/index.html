@@ -3,17 +3,24 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Zhangtk&#39;s Blog</title>
+  <title>spring的jdbctemplate与hibernate | Zhangtk&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="HDU&apos;s Zhangtk">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Zhangtk's Blog">
-<meta property="og:url" content="http://zhangtk.com/index.html">
+  <meta name="description" content="最近在看spring，发现jdbctemplate也能很好地对数据库CRUD，那么产生了如摘要的疑问，在此记录一下，红色字体为重点。
+
+JDBCTemplate是Spring对jdbc的封装，但sql还是得自己写，一旦要写sql，则会增加灵活和复杂性，当然也不利于跨数据库（毕竟每个数据库的实现产品的sql也不竟相同）。若使用hibernate则不用关心底层的数据库是哪个数据库，在编程方面，也更对象">
+<meta property="og:type" content="article">
+<meta property="og:title" content="spring的jdbctemplate与hibernate">
+<meta property="og:url" content="http://zhangtk.com/2015/05/06/spring的jdbctemplate与hibernate/index.html">
 <meta property="og:site_name" content="Zhangtk's Blog">
-<meta property="og:description" content="HDU&apos;s Zhangtk">
+<meta property="og:description" content="最近在看spring，发现jdbctemplate也能很好地对数据库CRUD，那么产生了如摘要的疑问，在此记录一下，红色字体为重点。
+
+JDBCTemplate是Spring对jdbc的封装，但sql还是得自己写，一旦要写sql，则会增加灵活和复杂性，当然也不利于跨数据库（毕竟每个数据库的实现产品的sql也不竟相同）。若使用hibernate则不用关心底层的数据库是哪个数据库，在编程方面，也更对象">
+<meta property="og:updated_time" content="2015-07-30T09:08:52.156Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Zhangtk's Blog">
-<meta name="twitter:description" content="HDU&apos;s Zhangtk">
+<meta name="twitter:title" content="spring的jdbctemplate与hibernate">
+<meta name="twitter:description" content="最近在看spring，发现jdbctemplate也能很好地对数据库CRUD，那么产生了如摘要的疑问，在此记录一下，红色字体为重点。
+
+JDBCTemplate是Spring对jdbc的封装，但sql还是得自己写，一旦要写sql，则会增加灵活和复杂性，当然也不利于跨数据库（毕竟每个数据库的实现产品的sql也不竟相同）。若使用hibernate则不用关心底层的数据库是哪个数据库，在编程方面，也更对象">
   
     <link rel="alternative" href="/atom.xml" title="Zhangtk&#39;s Blog" type="application/atom+xml">
   
@@ -183,9 +190,7 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap">
-  
-    <article id="post-spring的jdbctemplate与hibernate" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-spring的jdbctemplate与hibernate" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
       <a href="/2015/05/06/spring的jdbctemplate与hibernate/" class="article-date">
@@ -201,12 +206,23 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/05/06/spring的jdbctemplate与hibernate/">spring的jdbctemplate与hibernate</a>
+    <h1 class="article-title" itemprop="name">
+      spring的jdbctemplate与hibernate
     </h1>
   
 
       </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spring-jdbctemplate-hibernate/">spring,jdbctemplate,hibernate</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
       
     
     <div class="article-entry" itemprop="articleBody">
@@ -227,31 +243,52 @@
       
     </div>
     
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spring-jdbctemplate-hibernate/">spring,jdbctemplate,hibernate</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
   </div>
+  
+    
   
 </article>
 
 
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="spring的jdbctemplate与hibernate" data-title="spring的jdbctemplate与hibernate" data-url="http://zhangtk.com/2015/05/06/spring的jdbctemplate与hibernate/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"zhangtk"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
 
 
 
 
-
-  
-  
 </div>
       <footer id="footer">
   <div class="outer">
@@ -275,8 +312,8 @@
 		fancybox: true,
 		mathjax: true,
 		animate: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

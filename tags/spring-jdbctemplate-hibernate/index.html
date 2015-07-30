@@ -3,24 +3,17 @@
 <head>
   <meta charset="utf-8">
   
-  <title>spring的jdbctemplate与hibernate | Zhangtk&#39;s Blog</title>
+  <title>Tag: spring,jdbctemplate,hibernate | Zhangtk&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="最近在看spring，发现jdbctemplate也能很好地对数据库CRUD，那么产生了如摘要的疑问，在此记录一下，红色字体为重点。
-
-JDBCTemplate是Spring对jdbc的封装，但sql还是得自己写，一旦要写sql，则会增加灵活和复杂性，当然也不利于跨数据库（毕竟每个数据库的实现产品的sql也不竟相同）。若使用hibernate则不用关心底层的数据库是哪个数据库，在编程方面，也更对象">
-<meta property="og:type" content="article">
-<meta property="og:title" content="spring的jdbctemplate与hibernate">
-<meta property="og:url" content="http://zhangtk.com/2015/07/30/spring的jdbctemplate与hibernate/index.html">
+  <meta name="description" content="HDU&apos;s Zhangtk">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Zhangtk's Blog">
+<meta property="og:url" content="http://zhangtk.com/tags/spring-jdbctemplate-hibernate/index.html">
 <meta property="og:site_name" content="Zhangtk's Blog">
-<meta property="og:description" content="最近在看spring，发现jdbctemplate也能很好地对数据库CRUD，那么产生了如摘要的疑问，在此记录一下，红色字体为重点。
-
-JDBCTemplate是Spring对jdbc的封装，但sql还是得自己写，一旦要写sql，则会增加灵活和复杂性，当然也不利于跨数据库（毕竟每个数据库的实现产品的sql也不竟相同）。若使用hibernate则不用关心底层的数据库是哪个数据库，在编程方面，也更对象">
-<meta property="og:updated_time" content="2015-07-30T08:49:14.543Z">
+<meta property="og:description" content="HDU&apos;s Zhangtk">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="spring的jdbctemplate与hibernate">
-<meta name="twitter:description" content="最近在看spring，发现jdbctemplate也能很好地对数据库CRUD，那么产生了如摘要的疑问，在此记录一下，红色字体为重点。
-
-JDBCTemplate是Spring对jdbc的封装，但sql还是得自己写，一旦要写sql，则会增加灵活和复杂性，当然也不利于跨数据库（毕竟每个数据库的实现产品的sql也不竟相同）。若使用hibernate则不用关心底层的数据库是哪个数据库，在编程方面，也更对象">
+<meta name="twitter:title" content="Zhangtk's Blog">
+<meta name="twitter:description" content="HDU&apos;s Zhangtk">
   
     <link rel="alternative" href="/atom.xml" title="Zhangtk&#39;s Blog" type="application/atom+xml">
   
@@ -112,7 +105,7 @@ JDBCTemplate是Spring对jdbc的封装，但sql还是得自己写，一旦要写s
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						
+						<a href="/tags/spring-jdbctemplate-hibernate/" style="font-size: 10px;">spring,jdbctemplate,hibernate</a>
 					</div>
 				</section>
 				
@@ -190,111 +183,53 @@ JDBCTemplate是Spring对jdbc的封装，但sql还是得自己写，一旦要写s
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-spring的jdbctemplate与hibernate" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap">
   
-    <div class="article-meta">
-      <a href="/2015/07/30/spring的jdbctemplate与hibernate/" class="article-date">
-  	<time datetime="2015-07-30T08:49:14.543Z" itemprop="datePublished">2015-07-30</time>
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2015" class="archive-year">2015</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2015/05/06/spring的jdbctemplate与hibernate/" class="archive-article-date">
+  	<time datetime="2015-05-06T07:50:00.000Z" itemprop="datePublished">5月 6</time>
 </a>
-    </div>
+        </div>
+    	 
   
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      spring的jdbctemplate与hibernate
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2015/05/06/spring的jdbctemplate与hibernate/">spring的jdbctemplate与hibernate</a>
     </h1>
   
 
-      </header>
-      
-      <div class="article-info article-info-post">
-        
-        
-
-        <div class="clearfix"></div>
-      </div>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>最近在看spring，发现jdbctemplate也能很好地对数据库CRUD，那么产生了如摘要的疑问，在此记录一下，红色字体为重点。</p>
-<ul>
-<li>JDBCTemplate是Spring对jdbc的封装，但sql还是得自己写，一旦要写sql，则会增加灵活和复杂性，当然也<font color="red">不利于跨数据库</font>（毕竟每个数据库的实现产品的sql也不竟相同）。<br>若使用hibernate则不用关心底层的数据库是哪个数据库，在编程方面，也更<font color="red">对象化了</font>，比如 save(Object obj),我们操作的都是对象。hibernate也利用了<font color="red">缓存</font>产生实现与数据库的读取操作，<font color="red">提高性能</font>太多了。</li>
-<li><p>现在许多项目都采用hibernateTemplate和JDBCTemplate<font color="red">混用</font>的方式<br>HibernateTemplate一般是为了<font color="red">加快开发效率</font>，还有就是使用Hibernate的时候,更简洁,更便利,而<font color="red">统一的声明事务</font>,又让本来就已经很简洁的Hibernate对事务的处理,大大简化<br>但任何事务都有两面性,在带来大量便捷的同时,Hibernate也给我们留下了一点小小的遗憾,比如众所周知的,<font color="red">在处理大批量数据查询的时候,Hibernate的查询效率,是不尽人意的,有人做过测试,在高并发查询的时候,hibernate的查询效率,仅仅相当于使用jdbc效率7成左右</font>,这对于对速度有着很高要求的互联网应用来说,不能不说是悲剧。<br>Hibernate在做批量操作时，效率不是很理想。所以现在采用JDBCTemplate和Hibernate混用，这时有几个注意事项:</p>
-<p> 1.如果采用JDBCTemplate的部分只涉及到查询，则可以使用Hibernate的应用缓存，即二级缓存。 </p>
-<ol>
-<li>如果采用JDBCTemplate的部分涉及到对数据库的更新操作,即增，删，改.则不能开启Hibernate的二级缓存，如果系统有缓存的需要，我觉得可以自己在逻辑层实现缓存.Java的缓存方案还是很多的。</li>
-<li>在使用Spring做为容器的系统中，混用JDBCTemplate和Hibernate，事务管理请统一使用HibernateTransactionManager，前提是JDBCTemplate和Hibernate共用一个DataSource.</li>
-</ol>
-</li>
-</ul>
-<p>在此我只是对资料的汇合。</p>
-<h3 id="参考资料：">参考资料：</h3><p>1.<a href="http://bbs.csdn.net/topics/330256418" target="_blank" rel="external">http://bbs.csdn.net/topics/330256418</a><br>2.<a href="http://zhidao.baidu.com/link?url=UMlaR3oPG9mtIEh748IyUlZhWILd2RIA9AxVPbd_BeUuL-cF0184pQQwzm_AimEYS6y5og38skL4xWHoX11bDq" target="_blank" rel="external">http://zhidao.baidu.com/link?url=UMlaR3oPG9mtIEh748IyUlZhWILd2RIA9AxVPbd_BeUuL-cF0184pQQwzm_AimEYS6y5og38skL4xWHoX11bDq</a></p>
-
-      
-    </div>
-    
-  </div>
-  
-    
-<nav id="article-nav">
-  
-  
-    <a href="/2015/07/30/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hello World</div>
-      <strong class="article-nav-caption">></strong>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-
-<div class="share">
-	<!-- JiaThis Button BEGIN -->
-	<div class="jiathis_style">
-		<span class="jiathis_txt">分享到：</span>
-		<a class="jiathis_button_tsina"></a>
-		<a class="jiathis_button_cqq"></a>
-		<a class="jiathis_button_douban"></a>
-		<a class="jiathis_button_weixin"></a>
-		<a class="jiathis_button_tumblr"></a>
-		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+        <div class="article-info info-on-right">
+          
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spring-jdbctemplate-hibernate/">spring,jdbctemplate,hibernate</a></li></ul>
 	</div>
-	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
-	<!-- JiaThis Button END -->
-</div>
 
+          
 
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+  
+    </div></section>
+  
 
-<div class="duoshuo">
-	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="spring的jdbctemplate与hibernate" data-title="spring的jdbctemplate与hibernate" data-url="http://zhangtk.com/2015/07/30/spring的jdbctemplate与hibernate/"></div>
-	<!-- 多说评论框 end -->
-	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-	<script type="text/javascript">
-	var duoshuoQuery = {short_name:"zhangtk"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-	<!-- 多说公共JS代码 end -->
-</div>
-
-
-
+    
 
 </div>
       <footer id="footer">
@@ -320,9 +255,9 @@ JDBCTemplate是Spring对jdbc的封装，但sql还是得自己写，一旦要写s
 		mathjax: true,
 		animate: true,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false
 	}
