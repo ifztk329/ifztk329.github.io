@@ -213,17 +213,7 @@
       
         <p>最近在看spring，发现jdbctemplate也能很好地对数据库CRUD，那么产生了如摘要的疑问，在此记录一下，红色字体为重点。</p>
 <ul>
-<li>JDBCTemplate是Spring对jdbc的封装，但sql还是得自己写，一旦要写sql，则会增加灵活和复杂性，当然也<font color="red">不利于跨数据库</font>（毕竟每个数据库的实现产品的sql也不竟相同）。<br>若使用hibernate则不用关心底层的数据库是哪个数据库，在编程方面，也更<font color="red">对象化了</font>，比如 save(Object obj),我们操作的都是对象。hibernate也利用了<font color="red">缓存</font>产生实现与数据库的读取操作，<font color="red">提高性能</font>太多了。</li>
-<li>现在许多项目都采用hibernateTemplate和JDBCTemplate<font color="red">混用</font>的方式<br> HibernateTemplate一般是为了<font color="red">加快开发效率</font>，还有就是使用Hibernate的时候,更简洁,更便利,而<font color="red">统一的声明事务</font>,又让本来就已经很简洁的Hibernate对事务的处理,大大简化 但任何事务都有两面性,在带来大量便捷的同时,Hibernate也给我们留下了一点小小的遗憾,比如众所周知的,<font color="red">在处理大批量数据查询的时候,Hibernate的查询效率,是不尽人意的,有人做过测试,在高并发查询的时候,hibernate的查询效率,仅仅相当于使用jdbc效率7成左右</font>,这对于对速度有着很高要求的互联网应用来说,不能不说是悲剧。<br> Hibernate在做批量操作时，效率不是很理想。所以现在采用JDBCTemplate和Hibernate混用，这时有几个注意事项:   </li>
-</ul>
-<ol>
-<li>如果采用JDBCTemplate的部分只涉及到查询，则可以使用Hibernate的应用缓存，即二级缓存。 </li>
-<li>如果采用JDBCTemplate的部分涉及到对数据库的更新操作,即增，删，改.则不能开启Hibernate的二级缓存，如果系统有缓存的需要，我觉得可以自己在逻辑层实现缓存.Java的缓存方案还是很多的。</li>
-<li>在使用Spring做为容器的系统中，混用JDBCTemplate和Hibernate，事务管理请统一使用HibernateTransactionManager，前提是JDBCTemplate和Hibernate共用一个DataSource.</li>
-</ol>
-<p>在此我只是对资料的汇合。</p>
-<h3 id="参考资料：">参考资料：</h3><p>1.<a href="http://bbs.csdn.net/topics/330256418" target="_blank" rel="external">http://bbs.csdn.net/topics/330256418</a><br>2.<a href="http://zhidao.baidu.com/link?url=UMlaR3oPG9mtIEh748IyUlZhWILd2RIA9AxVPbd_BeUuL-cF0184pQQwzm_AimEYS6y5og38skL4xWHoX11bDq" target="_blank" rel="external">http://zhidao.baidu.com/link?url=UMlaR3oPG9mtIEh748IyUlZhWILd2RIA9AxVPbd_BeUuL-cF0184pQQwzm_AimEYS6y5og38skL4xWHoX11bDq</a></p>
-
+<li>JDBCTemplate是Spring对jdbc的封装，但sql还是得自己写，一旦要写sql，则会增加灵活和复杂性，当然也<font color="red">不利于跨数据库</font>（毕竟每个数据库的实现产品的sql也不竟相同）。
       
     </div>
     
@@ -236,6 +226,10 @@
 
       
 
+      
+        <p class="article-more-link">
+          <a  href="/2015/05/06/spring的jdbctemplate与hibernate/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
