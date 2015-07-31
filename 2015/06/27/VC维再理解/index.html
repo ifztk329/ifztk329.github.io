@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>VC维再理解 | Zhangtk&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="看了台大的机器学习基石的课。讲了很多周的VC维的知识，对VC维的认识还是有点模糊，在这里梳理一下。
+VC维被认为是数学和计算机科学中非常重要的定量化概念，它可用来刻画分类系统的性能。在机器学习里我们常常看到这样的说法：一般而言, VC维越大, 学习能力就越强,学习也越复杂；可以通过VC维计算学习风险的上界。VC维的物理意义：如果我们将假设集合的数量|H|比作假设集合的自由度，那么VC维就是假设集合">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VC维再理解">
+<meta property="og:url" content="http://zhangtk.com/2015/06/27/VC维再理解/index.html">
+<meta property="og:site_name" content="Zhangtk's Blog">
+<meta property="og:description" content="看了台大的机器学习基石的课。讲了很多周的VC维的知识，对VC维的认识还是有点模糊，在这里梳理一下。
+VC维被认为是数学和计算机科学中非常重要的定量化概念，它可用来刻画分类系统的性能。在机器学习里我们常常看到这样的说法：一般而言, VC维越大, 学习能力就越强,学习也越复杂；可以通过VC维计算学习风险的上界。VC维的物理意义：如果我们将假设集合的数量|H|比作假设集合的自由度，那么VC维就是假设集合">
+<meta property="og:image" content="http://static.oschina.net/uploads/img/201506/27150629_q2Ej.png">
+<meta property="og:image" content="http://static.oschina.net/uploads/space/2015/0627/144802_fl1g_2243330.jpg">
+<meta property="og:image" content="http://static.oschina.net/uploads/space/2015/0627/141335_4wrq_2243330.jpg">
+<meta property="og:image" content="http://static.oschina.net/uploads/space/2015/0627/141453_ClaB_2243330.jpg">
+<meta property="og:image" content="http://static.oschina.net/uploads/space/2015/0627/141612_uM4y_2243330.jpg">
+<meta property="og:updated_time" content="2015-07-31T05:40:34.020Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="VC维再理解">
+<meta name="twitter:description" content="看了台大的机器学习基石的课。讲了很多周的VC维的知识，对VC维的认识还是有点模糊，在这里梳理一下。
+VC维被认为是数学和计算机科学中非常重要的定量化概念，它可用来刻画分类系统的性能。在机器学习里我们常常看到这样的说法：一般而言, VC维越大, 学习能力就越强,学习也越复杂；可以通过VC维计算学习风险的上界。VC维的物理意义：如果我们将假设集合的数量|H|比作假设集合的自由度，那么VC维就是假设集合">
+  
+    <link rel="alternative" href="/atom.xml" title="Zhangtk&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://img2.duitang.com/uploads/item/201208/28/20120828001743_KYTeX.gif" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Zhangtk</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">我这半世未算赶，何妨迷路看风光</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/ifztk329" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://www.weibo.com/p/1005052599467787/home?from=page_100505&mod=TAB#place" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/zhang-ting-kai-63" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/IllegalMonitorStateException/" style="font-size: 10px;">IllegalMonitorStateException</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Transactional/" style="font-size: 10px;">Transactional</a> <a href="/tags/VC维/" style="font-size: 10px;">VC维</a> <a href="/tags/hibernate/" style="font-size: 10px;">hibernate</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/jdbctemplate/" style="font-size: 10px;">jdbctemplate</a> <a href="/tags/serializable/" style="font-size: 10px;">serializable</a> <a href="/tags/spring/" style="font-size: 20px;">spring</a> <a href="/tags/ssh免密码/" style="font-size: 10px;">ssh免密码</a> <a href="/tags/synchronized/" style="font-size: 10px;">synchronized</a> <a href="/tags/事务传播行为/" style="font-size: 10px;">事务传播行为</a> <a href="/tags/加州理工/" style="font-size: 10px;">加州理工</a> <a href="/tags/可行性/" style="font-size: 10px;">可行性</a> <a href="/tags/成长函数/" style="font-size: 10px;">成长函数</a> <a href="/tags/断点/" style="font-size: 10px;">断点</a> <a href="/tags/机器学习/" style="font-size: 20px;">机器学习</a> <a href="/tags/突破点/" style="font-size: 10px;">突破点</a> <a href="/tags/筛选法/" style="font-size: 10px;">筛选法</a> <a href="/tags/米勒拉宾算法/" style="font-size: 10px;">米勒拉宾算法</a> <a href="/tags/读书笔记/" style="font-size: 10px;">读书笔记</a> <a href="/tags/霍夫丁不等式/" style="font-size: 10px;">霍夫丁不等式</a> <a href="/tags/静态内部类/" style="font-size: 10px;">静态内部类</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://www.ibm.com/developerworks/cn/">IBM developerworks</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://tech.uc.cn/">UC技术博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://jm-blog.aliapp.com/">阿里中间件团队博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://coolshell.cn/">酷壳</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://tech.meituan.com/">美团技术团队博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://blogs.360.cn/">奇虎360技术博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.searchtb.com/">淘宝搜索技术博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://isux.tencent.com/">腾讯ISUX</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://gydmercy.github.io/">顾高飞</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Zhangtk</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://img2.duitang.com/uploads/item/201208/28/20120828001743_KYTeX.gif" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Zhangtk</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">我这半世未算赶，何妨迷路看风光</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/ifztk329" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://www.weibo.com/p/1005052599467787/home?from=page_100505&mod=TAB#place" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/zhang-ting-kai-63" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-VC维再理解" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/06/27/VC维再理解/" class="article-date">
+  	<time datetime="2015-06-27T07:06:00.000Z" itemprop="datePublished">2015-06-27</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      VC维再理解
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VC维/">VC维</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/机器学习/">机器学习</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/机器学习/">机器学习</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<p>看了台大的机器学习基石的课。讲了很多周的VC维的知识，对VC维的认识还是有点模糊，在这里梳理一下。</p>
+<font color="red"><br>VC维被认为是数学和计算机科学中非常重要的定量化概念，它可用来刻画分类系统的性能。在机器学习里我们常常看到这样的说法：一般而言, VC维越大, 学习能力就越强,学习也越复杂；可以通过VC维计算学习风险的上界。<br><br>VC维的物理意义：如果我们将假设集合的数量|H|比作假设集合的自由度，那么VC维就是假设集合在做二元分类的有效的自由度，即这个假设空间能够产生多少Dichotomies的能力（VC维说的是，到什么时候，假设集合还能shatter，还能产生最多的Dichotomies）。<br></font><br><img src="http://static.oschina.net/uploads/img/201506/27150629_q2Ej.png" alt="此处输入图片的描述"><br><br><br>  VC维越大，Ein（随机抽样得到的样本错误率）越小，Ω(N,Η,δ)（模型复杂度）越大<br><br>VC维越小，Ω(N,Η,δ)越小，Ein越大<br><a id="more"></a><br><br>这里一个很直接的信息就是模型复杂度随着VC维的变大不断变大，呈正相关趋势。<br><br>因为VC维变大时，数据中可以shatter的点就变多了，那么假设空间的容量就变大了，如果是一个合理的学习算法的话，就有机会找到一个更好的假设，使得Ein更小。<br><br>而Eout呢？在一开始的时候，Eout随着Ein的下降也下降，但是到某个点，因为我们要付出的代价变大了，Eout开始上升，所以最好的Eout是在中间的某个位置。<br><br>这里得到一个重要的结论，VC维越大或者假设空间能力越强大，虽然可以使得训练误差很小，但不见得是最好的选择，因为要为模型复杂度付出代价。<br><br><br>现在，我们用VC维这个工具来描述。<br><br><em> 如果VC维很小，那么发生预测偏差很大的坏事情的可能性也就很小，那这有利于Ein(g)接近Eout(g)；但是，这是我们的假设空间（H）的表达能力受到了限制，这样Ein(g)可能就没有办法做到很小。
+</em> 如果VC维很大，那么假设空间的表达能力很强，我们很有可能选到一个Ein(g)很小的假设，但是Ein(g)和Eout(g)之差很大的坏事情 发生的情况发生的可能性就变得很大，这样Ein(g)和Eout(g)根本不接近，我们就无法确定选择的假设在测试数据的时候表现的很好。<br><br>所以并不是VC维越大越好，一般我们考虑的都是在中间位置取值。<br><font color="red"><br>根据理论而言，样本复杂度大约是VC维的10000倍，而实际应用中，只需要VC维的10倍的量就够了。</font>
+
+<p>对一个指示函数集，如果存在h个样本能够被函数集中的函数按所有可能的2^h种形式分开，则称函数集能够把h个样本打散，函数集的VC维就是它能打散的最大样本数目h，若对任意数目的样本都有函数能将它们打散.则函数集的VC维是无穷大。有界实函数的VC维可以通过用一定的阈值将它转化成指示函数来定义。VC维反映了函数集的学习能力，VC维越大则学习机器越复杂，所以VC维又是学习机器复杂程度的一种衡量。</p>
+<font color="red"><br>这时，VC维变成了我们一个重要的选择，我们可以用VC维提供的信息来选择更好的模型和假设空间。</font>
+
+<p><strong>我们可以根据VC Bound公式，设发生坏事情的概率是δ，将其恒等变换可以得到训练误差和测试误差的差别ε。所以反过来讲，好事情（训练误差和测试误差的差别小于ε）发生时，Eout(g)被限制在一个范围内。这里根号内的式子定义为Ω(N,Η,δ)，称作模型复杂度,这个参数描述的意义是，我们的假设空间H有多么的强，使得我们的算法在泛化能力上需要付出多少代价。通俗的来讲，假设空间的容量越大，VC维越大，那么模型就越难学习。</strong></p>
+<p><img src="http://static.oschina.net/uploads/space/2015/0627/144802_fl1g_2243330.jpg" alt="此处输入图片的描述"></p>
+<p>  这里举个例子，来说明VC维</p>
+<p>　对于三个样本点的情况，下面的S1所有的标记方式是可以使用线性分类器进行分类的，因此其VC维至少为3<br>　<br>　<img src="http://static.oschina.net/uploads/space/2015/0627/141335_4wrq_2243330.jpg" alt="此处输入图片的描述"></p>
+<p>  虽然存在下面这种情况的S2，其中一种标记方式无法用线性分类器分类</p>
+<p>  <img src="http://static.oschina.net/uploads/space/2015/0627/141453_ClaB_2243330.jpg" alt="此处输入图片的描述"></p>
+<p>  但这种情况并不影响，这是因为，上一种的S1中，我们的H={二维线性分类器}可以实现其所有可能标签情况的分类，这和S2不能用H分散无关。（所以说只要有一种情况能用H分散即可）</p>
+<p>而对于4个样本点的情况，我们的H不能实现其<font color="red">所有可能</font>标签情况的分类（这是经过证明的，过程不详）如下图中某个S和其中一种标签分配情况：<br><img src="http://static.oschina.net/uploads/space/2015/0627/141612_uM4y_2243330.jpg" alt="此处输入图片的描述"></p>
+<p>  可见，H={二维线性分类器}的VC维是3。另外N维实数空间中线性分类器和线性实函数的VC维是n+1。对一些特殊的函数我们也明确知道其VC维，但并不是所有的。对于任意函数目前还没有很好的指导性方法来计算其VC维。</p>
+<p>如果某函数的VC维无穷大，也就意味着，任意多个点无论怎样标注都能将其打散。例如sin(ax)。它可以将任意多样本的任意标注情况精确分开，即在训练集上达到100%的分类正确率。</p>
+<h3 id="参考资料：">参考资料：</h3><ol>
+<li><p><a href="http://www.cnblogs.com/wuyuegb2312/archive/2012/12/03/2799893.html" target="_blank" rel="external">http://www.cnblogs.com/wuyuegb2312/archive/2012/12/03/2799893.html</a></p>
+</li>
+<li><p><a href="http://www.flickering.cn/machine_learning/2015/04/vc%E7%BB%B4%E7%9A%84%E6%9D%A5%E9%BE%99%E5%8E%BB%E8%84%89/" target="_blank" rel="external">http://www.flickering.cn/machine_learning/2015/04/vc%E7%BB%B4%E7%9A%84%E6%9D%A5%E9%BE%99%E5%8E%BB%E8%84%89/</a></p>
+</li>
+<li><p><a href="http://www.cnblogs.com/qqhfeng/archive/2012/05/16/2504035.html" target="_blank" rel="external">http://www.cnblogs.com/qqhfeng/archive/2012/05/16/2504035.html</a></p>
+</li>
+<li><p><a href="http://www.open-open.com/lib/view/open1420689433578.html" target="_blank" rel="external">http://www.open-open.com/lib/view/open1420689433578.html</a></p>
+</li>
+</ol>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/07/06/机器学习的可行性/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          机器学习的可行性
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/06/01/ssh免密码原理/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">ssh免密码原理</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="VC维再理解" data-title="VC维再理解" data-url="http://zhangtk.com/2015/06/27/VC维再理解/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"zhangtk"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 Zhangtk
+    	</div>
+      	<div class="footer-right">
+      		Talk with me<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1294604739&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:1294604739:52" alt="点击这里给我发消息" title="点击这里给我发消息"/></a>
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-64709648-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

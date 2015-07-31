@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>关于java.lang.IllegalMonitorStateException | Zhangtk&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="今天在写生产者消费者问题时，报出了关于java.lang.IllegalMonitorStateException这个错误
+
+代码如下：123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于java.lang.IllegalMonitorStateException">
+<meta property="og:url" content="http://zhangtk.com/2015/05/20/关于java-lang-IllegalMonitorStateException/index.html">
+<meta property="og:site_name" content="Zhangtk's Blog">
+<meta property="og:description" content="今天在写生产者消费者问题时，报出了关于java.lang.IllegalMonitorStateException这个错误
+
+代码如下：123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707">
+<meta property="og:image" content="http://static.oschina.net/uploads/space/2015/0520/131726_hzeE_2243330.png">
+<meta property="og:updated_time" content="2015-07-31T05:41:37.639Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="关于java.lang.IllegalMonitorStateException">
+<meta name="twitter:description" content="今天在写生产者消费者问题时，报出了关于java.lang.IllegalMonitorStateException这个错误
+
+代码如下：123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707">
+  
+    <link rel="alternative" href="/atom.xml" title="Zhangtk&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://img2.duitang.com/uploads/item/201208/28/20120828001743_KYTeX.gif" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Zhangtk</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">我这半世未算赶，何妨迷路看风光</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/ifztk329" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://www.weibo.com/p/1005052599467787/home?from=page_100505&mod=TAB#place" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/zhang-ting-kai-63" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/IllegalMonitorStateException/" style="font-size: 10px;">IllegalMonitorStateException</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Transactional/" style="font-size: 10px;">Transactional</a> <a href="/tags/VC维/" style="font-size: 10px;">VC维</a> <a href="/tags/hibernate/" style="font-size: 10px;">hibernate</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/jdbctemplate/" style="font-size: 10px;">jdbctemplate</a> <a href="/tags/serializable/" style="font-size: 10px;">serializable</a> <a href="/tags/spring/" style="font-size: 20px;">spring</a> <a href="/tags/ssh免密码/" style="font-size: 10px;">ssh免密码</a> <a href="/tags/synchronized/" style="font-size: 10px;">synchronized</a> <a href="/tags/事务传播行为/" style="font-size: 10px;">事务传播行为</a> <a href="/tags/加州理工/" style="font-size: 10px;">加州理工</a> <a href="/tags/可行性/" style="font-size: 10px;">可行性</a> <a href="/tags/成长函数/" style="font-size: 10px;">成长函数</a> <a href="/tags/断点/" style="font-size: 10px;">断点</a> <a href="/tags/机器学习/" style="font-size: 20px;">机器学习</a> <a href="/tags/突破点/" style="font-size: 10px;">突破点</a> <a href="/tags/筛选法/" style="font-size: 10px;">筛选法</a> <a href="/tags/米勒拉宾算法/" style="font-size: 10px;">米勒拉宾算法</a> <a href="/tags/读书笔记/" style="font-size: 10px;">读书笔记</a> <a href="/tags/霍夫丁不等式/" style="font-size: 10px;">霍夫丁不等式</a> <a href="/tags/静态内部类/" style="font-size: 10px;">静态内部类</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://www.ibm.com/developerworks/cn/">IBM developerworks</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://tech.uc.cn/">UC技术博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://jm-blog.aliapp.com/">阿里中间件团队博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://coolshell.cn/">酷壳</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://tech.meituan.com/">美团技术团队博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://blogs.360.cn/">奇虎360技术博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.searchtb.com/">淘宝搜索技术博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://isux.tencent.com/">腾讯ISUX</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://gydmercy.github.io/">顾高飞</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Zhangtk</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://img2.duitang.com/uploads/item/201208/28/20120828001743_KYTeX.gif" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Zhangtk</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">我这半世未算赶，何妨迷路看风光</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/ifztk329" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://www.weibo.com/p/1005052599467787/home?from=page_100505&mod=TAB#place" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/zhang-ting-kai-63" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-关于java-lang-IllegalMonitorStateException" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/05/20/关于java-lang-IllegalMonitorStateException/" class="article-date">
+  	<time datetime="2015-05-20T08:55:00.000Z" itemprop="datePublished">2015-05-20</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      关于java.lang.IllegalMonitorStateException
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IllegalMonitorStateException/">IllegalMonitorStateException</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/synchronized/">synchronized</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Java/">Java</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<p>今天在写生产者消费者问题时，报出了关于java.lang.IllegalMonitorStateException这个错误</p>
+<hr>
+<p>代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> test;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Hosee</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Integer count = <span class="number">0</span>;<span class="comment">//注意点，被synchronized保护的对象通常是private</span></span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">final</span> Integer FULL = <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> String LOCK = <span class="string">"LOCK"</span>;</span><br><span class="line"> </span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Producer</span> <span class="keyword">implements</span> <span class="title">Runnable</span></span><br><span class="line">    </span>&#123;</span><br><span class="line"> </span><br><span class="line">        <span class="annotation">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span><br><span class="line">        </span>&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">try</span></span><br><span class="line">                &#123;</span><br><span class="line">                    Thread.sleep(<span class="number">3000</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">catch</span> (Exception e)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="comment">// <span class="doctag">TODO:</span> handle exception</span></span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">synchronized</span> (LOCK)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">while</span> (count == FULL)</span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="keyword">try</span></span><br><span class="line">                        &#123;</span><br><span class="line">                            wait();</span><br><span class="line">                        &#125;</span><br><span class="line">                        <span class="keyword">catch</span> (Exception e)</span><br><span class="line">                        &#123;</span><br><span class="line">                            <span class="comment">// <span class="doctag">TODO:</span> handle exception</span></span><br><span class="line">                            e.printStackTrace();</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                    count++;</span><br><span class="line">                    System.out.println(Thread.currentThread().getName()+<span class="string">"生产者生产，目前总共有"</span> + count);</span><br><span class="line">                    notify();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Consumer</span> <span class="keyword">implements</span> <span class="title">Runnable</span></span><br><span class="line">    </span>&#123;</span><br><span class="line"> </span><br><span class="line">        <span class="annotation">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span><br><span class="line">        </span>&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">try</span></span><br><span class="line">                &#123;</span><br><span class="line">                    Thread.sleep(<span class="number">3000</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">catch</span> (InterruptedException e1)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">                    e1.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">synchronized</span> (LOCK)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">while</span> (count == <span class="number">0</span>)</span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="keyword">try</span></span><br><span class="line">                        &#123;</span><br><span class="line">                            wait();</span><br><span class="line">                        &#125;</span><br><span class="line">                        <span class="keyword">catch</span> (Exception e)</span><br><span class="line">                        &#123;</span><br><span class="line">                            <span class="comment">// <span class="doctag">TODO:</span> handle exception</span></span><br><span class="line">                            e.printStackTrace();</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                    count--;</span><br><span class="line">                    System.out.println(Thread.currentThread().getName()+<span class="string">"消费者消费，目前总共有"</span> + count);</span><br><span class="line">                    notify();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"> </span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception</span><br><span class="line">    </span>&#123;</span><br><span class="line">        Hosee hosee = <span class="keyword">new</span> Hosee();</span><br><span class="line">        <span class="keyword">new</span> Thread(hosee.new Producer()).start();</span><br><span class="line">        <span class="keyword">new</span> Thread(hosee.new Consumer()).start();</span><br><span class="line">        <span class="keyword">new</span> Thread(hosee.new Producer()).start();</span><br><span class="line">        <span class="keyword">new</span> Thread(hosee.new Consumer()).start();</span><br><span class="line">         </span><br><span class="line">        <span class="keyword">new</span> Thread(hosee.new Producer()).start();</span><br><span class="line">        <span class="keyword">new</span> Thread(hosee.new Consumer()).start();</span><br><span class="line">        <span class="keyword">new</span> Thread(hosee.new Producer()).start();</span><br><span class="line">        <span class="keyword">new</span> Thread(hosee.new Consumer()).start();</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<hr>
+<a id="more"></a>
+<p>原因很简单，在jdk中已经有了解释</p>
+<p><img src="http://static.oschina.net/uploads/space/2015/0520/131726_hzeE_2243330.png" alt="此处输入图片的描述"></p>
+<hr>
+<p>只有获得当前锁的对象才可以调用wait/notify/notifyAll，我们可以粗略的理解为，锁了哪个就用哪个对象调用wait/notify/notifyAll（如同jdk中的例子）</p>
+<p>所以在我的代码中，只要改成</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">LOCK.wait();</span><br><span class="line"> </span><br><span class="line">LOCK.notify();</span><br></pre></td></tr></table></figure>
+<p>就可以了</p>
+<p>我们可以举几个简单的例子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">exapmle <span class="number">1</span>,锁定方法所属的实例对象:</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> method（）&#123;</span><br><span class="line">    <span class="comment">//然后就可以调用：this.notify()...</span></span><br><span class="line">    <span class="comment">//或者直接调用notify()...</span></span><br><span class="line">&#125;</span><br><span class="line">exapmle <span class="number">2</span>,锁定方法所属的实例的Class:</span><br><span class="line"><span class="keyword">public</span> Class Test&#123;</span><br><span class="line"> <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> method（）&#123;</span><br><span class="line">    <span class="comment">//然后调用：Test.class.notify()...</span></span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line">exapmle <span class="number">3</span>,锁定其他对象:</span><br><span class="line"><span class="keyword">public</span> Class Test&#123;</span><br><span class="line"><span class="keyword">public</span> Object lock = <span class="keyword">new</span> Object();</span><br><span class="line"> <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> method（）&#123;</span><br><span class="line">    <span class="keyword">synchronized</span> (lock) &#123;</span><br><span class="line">     <span class="comment">//需要调用 lock.notify();</span></span><br><span class="line">    &#125; </span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当然有一个情况需要注意一下。<br>代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">boolean</span> wait = <span class="keyword">false</span>;</span><br><span class="line">     </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">pleaseWait</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">synchronized</span> (<span class="keyword">this</span>.wait) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.wait == <span class="keyword">true</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">this</span>.wait =<span class="keyword">true</span>;</span><br><span class="line">         </span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">this</span>.wait.wait();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line"> </span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>比如用变量当锁，然后在同步块中对变量改变了值。抛出了java.lang.IllegalMonitorStateException。</p>
+<p>真正的原因是在调用<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.wait = <span class="keyword">true</span>;</span><br></pre></td></tr></table></figure></p>
+<p>之后。Boolean型变量在执行赋值语句的时候，其实是创建了一个新的对象。简单的说，在赋值语句的之前和之后，this.wait并不是同一个对象。</p>
+<hr>
+<p><strong>相同的悲剧还有可能出现在this.wait是Integer或者String类型的时候。</strong></p>
+<p>一个解决方案是采用java.util.concurrent.atomic中对应的类型，比如这里就应该是AtomicBoolean。采用AtomicBoolean类型，可以保证对它的修改不会产生新的对象。</p>
+<h3 id="参考资料：">参考资料：</h3><ol>
+<li><p><a href="http://blog.csdn.net/historyasamirror/article/details/6709693" target="_blank" rel="external">http://blog.csdn.net/historyasamirror/article/details/6709693</a></p>
+</li>
+<li><p><a href="http://www.blogjava.net/freeman1984/archive/2011/10/14/361306.html" target="_blank" rel="external">http://www.blogjava.net/freeman1984/archive/2011/10/14/361306.html</a></p>
+</li>
+</ol>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/05/27/Spring事务的传播行为/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Spring事务的传播行为
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/05/19/Java中的静态内部类/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java中的静态内部类</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="关于java-lang-IllegalMonitorStateException" data-title="关于java.lang.IllegalMonitorStateException" data-url="http://zhangtk.com/2015/05/20/关于java-lang-IllegalMonitorStateException/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"zhangtk"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 Zhangtk
+    	</div>
+      	<div class="footer-right">
+      		Talk with me<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1294604739&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:1294604739:52" alt="点击这里给我发消息" title="点击这里给我发消息"/></a>
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-64709648-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

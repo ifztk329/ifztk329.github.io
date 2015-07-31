@@ -105,7 +105,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/hibernate/" style="font-size: 10px;">hibernate</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/jdbctemplate/" style="font-size: 10px;">jdbctemplate</a> <a href="/tags/serializable/" style="font-size: 10px;">serializable</a> <a href="/tags/spring/" style="font-size: 10px;">spring</a> <a href="/tags/筛选法/" style="font-size: 10px;">筛选法</a> <a href="/tags/米勒拉宾算法/" style="font-size: 10px;">米勒拉宾算法</a> <a href="/tags/静态内部类/" style="font-size: 10px;">静态内部类</a>
+						<a href="/tags/IllegalMonitorStateException/" style="font-size: 10px;">IllegalMonitorStateException</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Transactional/" style="font-size: 10px;">Transactional</a> <a href="/tags/VC维/" style="font-size: 10px;">VC维</a> <a href="/tags/hibernate/" style="font-size: 10px;">hibernate</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/jdbctemplate/" style="font-size: 10px;">jdbctemplate</a> <a href="/tags/serializable/" style="font-size: 10px;">serializable</a> <a href="/tags/spring/" style="font-size: 20px;">spring</a> <a href="/tags/ssh免密码/" style="font-size: 10px;">ssh免密码</a> <a href="/tags/synchronized/" style="font-size: 10px;">synchronized</a> <a href="/tags/事务传播行为/" style="font-size: 10px;">事务传播行为</a> <a href="/tags/加州理工/" style="font-size: 10px;">加州理工</a> <a href="/tags/可行性/" style="font-size: 10px;">可行性</a> <a href="/tags/成长函数/" style="font-size: 10px;">成长函数</a> <a href="/tags/断点/" style="font-size: 10px;">断点</a> <a href="/tags/机器学习/" style="font-size: 20px;">机器学习</a> <a href="/tags/突破点/" style="font-size: 10px;">突破点</a> <a href="/tags/筛选法/" style="font-size: 10px;">筛选法</a> <a href="/tags/米勒拉宾算法/" style="font-size: 10px;">米勒拉宾算法</a> <a href="/tags/读书笔记/" style="font-size: 10px;">读书笔记</a> <a href="/tags/霍夫丁不等式/" style="font-size: 10px;">霍夫丁不等式</a> <a href="/tags/静态内部类/" style="font-size: 10px;">静态内部类</a>
 					</div>
 				</section>
 				
@@ -185,6 +185,357 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-机器学习的可行性" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/07/06/机器学习的可行性/" class="article-date">
+  	<time datetime="2015-07-06T07:44:00.000Z" itemprop="datePublished">2015-07-06</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/07/06/机器学习的可行性/">机器学习的可行性</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<p>在此做下笔记，梳理一下。</p>
+<p>OK，首先我们已经确定了一件事，什么样的情况下，机器学习是可以适用的。</p>
+<ol>
+<li>是否有一个可以研究的模型。</li>
+<li>没有直观的数学公式可以推导</li>
+<li>我们有数据（课上说前两条也不必遵循，但是第三条是必须的，这里不展开。）</li>
+</ol>
+<p>我们目前的机器学习模型是这样的，</p>
+<font color="red"><br>为了得到未知的规则f，我们通过算法从数据集（X，Y）中计算，然后在假设集（H）选择一个最好的假设（g），使得g≈f.<br></font>
+
+<p>然而这就会有一个问题，我们真的学到了吗？我们得到的g的确是最符合数据集的，但是<font color="red">数据集之外</font>的数据呢，在那些新的数据下，我们得到的g真的就与f相近吗？</p>
+<h3 id="OK，我们将从概率论的角度去说明学习是可行的。">OK，我们将从概率论的角度去说明学习是可行的。</h3><p>有一个罐子，这个罐子里盛放着橙色和绿色两种颜色的小球，我们如何在不查遍所有小球的情况下，得知罐子中橙子小球所占的比例呢？抽取样本<br><img src="http://static.oschina.net/uploads/img/201507/06154410_CYqJ.png" alt="此处输入图片的描述"></p>
+<hr>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/加州理工/">加州理工</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/可行性/">可行性</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/成长函数/">成长函数</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/断点/">断点</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/机器学习/">机器学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/突破点/">突破点</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/霍夫丁不等式/">霍夫丁不等式</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/机器学习/">机器学习</a>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a  href="/2015/07/06/机器学习的可行性/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-VC维再理解" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/06/27/VC维再理解/" class="article-date">
+  	<time datetime="2015-06-27T07:06:00.000Z" itemprop="datePublished">2015-06-27</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/06/27/VC维再理解/">VC维再理解</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<p>看了台大的机器学习基石的课。讲了很多周的VC维的知识，对VC维的认识还是有点模糊，在这里梳理一下。</p>
+<font color="red"><br>VC维被认为是数学和计算机科学中非常重要的定量化概念，它可用来刻画分类系统的性能。在机器学习里我们常常看到这样的说法：一般而言, VC维越大, 学习能力就越强,学习也越复杂；可以通过VC维计算学习风险的上界。<br><br>VC维的物理意义：如果我们将假设集合的数量|H|比作假设集合的自由度，那么VC维就是假设集合在做二元分类的有效的自由度，即这个假设空间能够产生多少Dichotomies的能力（VC维说的是，到什么时候，假设集合还能shatter，还能产生最多的Dichotomies）。<br></font><br><img src="http://static.oschina.net/uploads/img/201506/27150629_q2Ej.png" alt="此处输入图片的描述"><br><br><br>  VC维越大，Ein（随机抽样得到的样本错误率）越小，Ω(N,Η,δ)（模型复杂度）越大<br><br>VC维越小，Ω(N,Η,δ)越小，Ein越大<br>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VC维/">VC维</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/机器学习/">机器学习</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/机器学习/">机器学习</a>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a  href="/2015/06/27/VC维再理解/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-ssh免密码原理" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/06/01/ssh免密码原理/" class="article-date">
+  	<time datetime="2015-06-01T09:05:00.000Z" itemprop="datePublished">2015-06-01</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/06/01/ssh免密码原理/">ssh免密码原理</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<p>所谓”公钥登录”(免密码登录)，原理很简单，就是用户将自己的公钥储存在远程主机上。</p>
+<p>登录的时候，远程主机会向用户发送一段随机字符串，用户用自己的私钥加密后，再发回来。</p>
+<p>远程主机用事先储存的公钥进行解密，如果成功，就证明用户是可信的，直接允许登录shell，不再要求密码。</p>
+<p>关于其他SSH的原理说明，请参看这篇文章<br><a href="http://www.ruanyifeng.com/blog/2011/12/ssh_remote_login.html" target="_blank" rel="external">http://www.ruanyifeng.com/blog/2011/12/ssh_remote_login.html</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ssh免密码/">ssh免密码</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Linux/">Linux</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-Spring事务的传播行为" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/05/27/Spring事务的传播行为/" class="article-date">
+  	<time datetime="2015-05-27T09:26:00.000Z" itemprop="datePublished">2015-05-27</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/05/27/Spring事务的传播行为/">Spring事务的传播行为</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<p>在service类前加上@Transactional，声明这个service所有方法需要事务管理。每一个业务方法开始时都会打开一个事务。</p>
+<p>Spring默认情况下会对运行期异常(RunTimeException)进行事务回滚。这个是unchecked</p>
+<p>如果遇到checked就不回滚。</p>
+<p>如何改变默认规则：</p>
+<ul>
+<li><p>让checked也回滚：在整个方法前加上</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@Transactional</span>(rollbackFor=Exception.class)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>让unchecked不回滚：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@Transactional</span>(notRollbackFor=RunTimeException.class)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>不需要事务管理的(只查询的)方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@Transactional</span>(propagation=Propagation.NOT_SUPPORTED)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>在整个方法运行前就不会开启事务</p>
+<ul>
+<li>这样就做成一个只读事务，可以提高效率。<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@Transactional</span>(propagation=Propagation.NOT_SUPPORTED,readOnly=<span class="keyword">true</span>)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="各种属性的意义：">各种属性的意义：</h3>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Transactional/">Transactional</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spring/">spring</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/事务传播行为/">事务传播行为</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Web开发/">Web开发</a>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a  href="/2015/05/27/Spring事务的传播行为/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-关于java-lang-IllegalMonitorStateException" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/05/20/关于java-lang-IllegalMonitorStateException/" class="article-date">
+  	<time datetime="2015-05-20T08:55:00.000Z" itemprop="datePublished">2015-05-20</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/05/20/关于java-lang-IllegalMonitorStateException/">关于java.lang.IllegalMonitorStateException</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<p>今天在写生产者消费者问题时，报出了关于java.lang.IllegalMonitorStateException这个错误</p>
+<hr>
+<p>代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> test;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Hosee</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Integer count = <span class="number">0</span>;<span class="comment">//注意点，被synchronized保护的对象通常是private</span></span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">final</span> Integer FULL = <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> String LOCK = <span class="string">"LOCK"</span>;</span><br><span class="line"> </span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Producer</span> <span class="keyword">implements</span> <span class="title">Runnable</span></span><br><span class="line">    </span>&#123;</span><br><span class="line"> </span><br><span class="line">        <span class="annotation">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span><br><span class="line">        </span>&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">try</span></span><br><span class="line">                &#123;</span><br><span class="line">                    Thread.sleep(<span class="number">3000</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">catch</span> (Exception e)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="comment">// <span class="doctag">TODO:</span> handle exception</span></span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">synchronized</span> (LOCK)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">while</span> (count == FULL)</span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="keyword">try</span></span><br><span class="line">                        &#123;</span><br><span class="line">                            wait();</span><br><span class="line">                        &#125;</span><br><span class="line">                        <span class="keyword">catch</span> (Exception e)</span><br><span class="line">                        &#123;</span><br><span class="line">                            <span class="comment">// <span class="doctag">TODO:</span> handle exception</span></span><br><span class="line">                            e.printStackTrace();</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                    count++;</span><br><span class="line">                    System.out.println(Thread.currentThread().getName()+<span class="string">"生产者生产，目前总共有"</span> + count);</span><br><span class="line">                    notify();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Consumer</span> <span class="keyword">implements</span> <span class="title">Runnable</span></span><br><span class="line">    </span>&#123;</span><br><span class="line"> </span><br><span class="line">        <span class="annotation">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span><br><span class="line">        </span>&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">try</span></span><br><span class="line">                &#123;</span><br><span class="line">                    Thread.sleep(<span class="number">3000</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">catch</span> (InterruptedException e1)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">                    e1.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">synchronized</span> (LOCK)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">while</span> (count == <span class="number">0</span>)</span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="keyword">try</span></span><br><span class="line">                        &#123;</span><br><span class="line">                            wait();</span><br><span class="line">                        &#125;</span><br><span class="line">                        <span class="keyword">catch</span> (Exception e)</span><br><span class="line">                        &#123;</span><br><span class="line">                            <span class="comment">// <span class="doctag">TODO:</span> handle exception</span></span><br><span class="line">                            e.printStackTrace();</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                    count--;</span><br><span class="line">                    System.out.println(Thread.currentThread().getName()+<span class="string">"消费者消费，目前总共有"</span> + count);</span><br><span class="line">                    notify();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"> </span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception</span><br><span class="line">    </span>&#123;</span><br><span class="line">        Hosee hosee = <span class="keyword">new</span> Hosee();</span><br><span class="line">        <span class="keyword">new</span> Thread(hosee.new Producer()).start();</span><br><span class="line">        <span class="keyword">new</span> Thread(hosee.new Consumer()).start();</span><br><span class="line">        <span class="keyword">new</span> Thread(hosee.new Producer()).start();</span><br><span class="line">        <span class="keyword">new</span> Thread(hosee.new Consumer()).start();</span><br><span class="line">         </span><br><span class="line">        <span class="keyword">new</span> Thread(hosee.new Producer()).start();</span><br><span class="line">        <span class="keyword">new</span> Thread(hosee.new Consumer()).start();</span><br><span class="line">        <span class="keyword">new</span> Thread(hosee.new Producer()).start();</span><br><span class="line">        <span class="keyword">new</span> Thread(hosee.new Consumer()).start();</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<hr>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IllegalMonitorStateException/">IllegalMonitorStateException</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/synchronized/">synchronized</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Java/">Java</a>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a  href="/2015/05/20/关于java-lang-IllegalMonitorStateException/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-Java中的静态内部类" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -223,24 +574,7 @@
 <li>该类是类还是接口</li>
 <li>该类型的访问修饰符</li>
 <li>直接超接口的全限定名的有序列表<h4 id="2-_已装载类的详细信息：">2. 已装载类的详细信息：</h4></li>
-<li>运行时常量池：<br>在方法区中，每个类型都对应一个常量池，存放该类型所用到的所有常量，常量池中存储了诸如文字字符串、final变量值、类名和方法名常量。它们以数组形式通过索引被访问，是外部调用与类联系及类型对象化的桥梁。（存的可能是个普通的字符串，然后经过常量池解析，则变成指向某个类的引用）</li>
-<li>字段信息：<br>字段信息存放类中声明的每一个字段的信息，包括字段的名、类型、修饰符。字段名称指的是类或接口的实例变量或类变量，字段的描述符是一个指示字段的类型的字符串，如private A a=null;则a为字段名，A为描述符，private为修饰符</li>
-<li>方法信息：<br>类中声明的每一个方法的信息，包括方法名、返回值类型、参数类型、修饰符、异常、方法的字节码。(在编译的时候，就已经将方法的局部变量、操作数栈大小等确定并存放在字节码中，在装载的时候，随着类一起装入方法区。)</li>
-</ul>
-<p>在运行时，JVM从常量池中获得符号引用，然后在运行时解析成引用项的实际地址，最后通过常量池中的全限定名、方法和字段描述符，把当前类或接口中的代码与其它类或接口中的代码联系起来。</p>
-<ul>
-<li>静态变量：这个没什么好说的，就是类变量，类的所有实例都共享，我们只需知道，在方法区有个静态区，静态区专门存放静态变量和静态块。</li>
-<li>到类classloader的引用：到该类的类装载器的引用。</li>
-<li>到类class的引用：虚拟机为每一个被装载的类型创建一个class实例，用来代表这个被装载的类。</li>
-</ul>
-<p>由此我们可以知道反射的基础：</p>
-<p>在装载类的时候，加入方法区中的所有信息，最后都会形成Class类的实例，代表这个被装载的类。方法区中的所有的信息，都是可以通过这个Class类对象反射得到。我们知道对象是类的实例，类是相同结构的对象的一种抽象。同类的各个对象之间，其实是拥有相同的结构（属性），拥有相同的功能（方法），各个对象的区别只在于属性值的不同。<br>    同样的，我们所有的类，其实都是Class类的实例，他们都拥有相同的结构—–Field数组、Method数组。而各个类中的属性都是Field属性的一个具体属性值，方法都是Method属性的一个具体属性值。</p>
-<p>在运行时，JVM从常量池中获得符号引用，然后在运行时解析成引用项的实际地址，最后通过常量池中的全限定名、方法和字段描述符，把当前类或接口中的代码与其它类或接口中的代码联系起来。</p>
-<h3 id="参考资料：">参考资料：</h3><ol>
-<li><a href="http://zhidao.baidu.com/link?url=fPFHee1b0yBDxwi3-FCjhkliA-qtprLjqtcqDiTZM5k-G3Q3YynS4kK5Jj5C1PvTSGnBSr52-9KjhLYjQnZx1_" target="_blank" rel="external">http://zhidao.baidu.com/link?url=fPFHee1b0yBDxwi3-FCjhkliA-qtprLjqtcqDiTZM5k-G3Q3YynS4kK5Jj5C1PvTSGnBSr52-9KjhLYjQnZx1_</a></li>
-<li><a href="http://blog.csdn.net/peterwin1987/article/details/7571808" target="_blank" rel="external">http://blog.csdn.net/peterwin1987/article/details/7571808</a></li>
-</ol>
-
+<li>运行时常量池：<br>在方法区中，每个类型都对应一个常量池，存放该类型所用到的所有常量，常量池中存储了诸如文字字符串、final变量值、类名和方法名常量。它们以数组形式通过索引被访问，是外部调用与类联系及类型对象化的桥梁。（存的可能是个普通的字符串，然后经过常量池解析，则变成指向某个类的引用）
       
     </div>
     
@@ -257,6 +591,10 @@
 	</div>
 
 
+      
+        <p class="article-more-link">
+          <a  href="/2015/05/19/Java中的静态内部类/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
