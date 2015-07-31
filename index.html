@@ -105,7 +105,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/IllegalMonitorStateException/" style="font-size: 10px;">IllegalMonitorStateException</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Transactional/" style="font-size: 10px;">Transactional</a> <a href="/tags/VC维/" style="font-size: 10px;">VC维</a> <a href="/tags/hibernate/" style="font-size: 10px;">hibernate</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/jdbctemplate/" style="font-size: 10px;">jdbctemplate</a> <a href="/tags/serializable/" style="font-size: 10px;">serializable</a> <a href="/tags/spring/" style="font-size: 20px;">spring</a> <a href="/tags/ssh免密码/" style="font-size: 10px;">ssh免密码</a> <a href="/tags/synchronized/" style="font-size: 10px;">synchronized</a> <a href="/tags/事务传播行为/" style="font-size: 10px;">事务传播行为</a> <a href="/tags/加州理工/" style="font-size: 10px;">加州理工</a> <a href="/tags/可行性/" style="font-size: 10px;">可行性</a> <a href="/tags/成长函数/" style="font-size: 10px;">成长函数</a> <a href="/tags/断点/" style="font-size: 10px;">断点</a> <a href="/tags/机器学习/" style="font-size: 20px;">机器学习</a> <a href="/tags/突破点/" style="font-size: 10px;">突破点</a> <a href="/tags/筛选法/" style="font-size: 10px;">筛选法</a> <a href="/tags/米勒拉宾算法/" style="font-size: 10px;">米勒拉宾算法</a> <a href="/tags/读书笔记/" style="font-size: 10px;">读书笔记</a> <a href="/tags/霍夫丁不等式/" style="font-size: 10px;">霍夫丁不等式</a> <a href="/tags/静态内部类/" style="font-size: 10px;">静态内部类</a>
+						<a href="/tags/BlockingQueue/" style="font-size: 10px;">BlockingQueue</a> <a href="/tags/IllegalMonitorStateException/" style="font-size: 10px;">IllegalMonitorStateException</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/PipedInputStream/" style="font-size: 10px;">PipedInputStream</a> <a href="/tags/ReentrantLock/" style="font-size: 10px;">ReentrantLock</a> <a href="/tags/Transactional/" style="font-size: 10px;">Transactional</a> <a href="/tags/VC维/" style="font-size: 10px;">VC维</a> <a href="/tags/hibernate/" style="font-size: 10px;">hibernate</a> <a href="/tags/java/" style="font-size: 13.33px;">java</a> <a href="/tags/jdbctemplate/" style="font-size: 10px;">jdbctemplate</a> <a href="/tags/notify/" style="font-size: 13.33px;">notify</a> <a href="/tags/notifyAll/" style="font-size: 10px;">notifyAll</a> <a href="/tags/serializable/" style="font-size: 10px;">serializable</a> <a href="/tags/spring/" style="font-size: 13.33px;">spring</a> <a href="/tags/ssh免密码/" style="font-size: 10px;">ssh免密码</a> <a href="/tags/synchronized/" style="font-size: 13.33px;">synchronized</a> <a href="/tags/wait/" style="font-size: 10px;">wait</a> <a href="/tags/事务传播行为/" style="font-size: 10px;">事务传播行为</a> <a href="/tags/加州理工/" style="font-size: 10px;">加州理工</a> <a href="/tags/可行性/" style="font-size: 10px;">可行性</a> <a href="/tags/成长函数/" style="font-size: 10px;">成长函数</a> <a href="/tags/断点/" style="font-size: 10px;">断点</a> <a href="/tags/机器学习/" style="font-size: 16.67px;">机器学习</a> <a href="/tags/生产者与消费者/" style="font-size: 10px;">生产者与消费者</a> <a href="/tags/突破点/" style="font-size: 10px;">突破点</a> <a href="/tags/筛选法/" style="font-size: 10px;">筛选法</a> <a href="/tags/管程/" style="font-size: 10px;">管程</a> <a href="/tags/米勒拉宾算法/" style="font-size: 10px;">米勒拉宾算法</a> <a href="/tags/读书笔记/" style="font-size: 10px;">读书笔记</a> <a href="/tags/读者写者/" style="font-size: 10px;">读者写者</a> <a href="/tags/霍夫丁不等式/" style="font-size: 10px;">霍夫丁不等式</a> <a href="/tags/静态内部类/" style="font-size: 10px;">静态内部类</a>
 					</div>
 				</section>
 				
@@ -184,6 +184,301 @@
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-Java对管程的支持" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/07/29/Java对管程的支持/" class="article-date">
+  	<time datetime="2015-07-29T09:54:00.000Z" itemprop="datePublished">2015-07-29</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/07/29/Java对管程的支持/">Java对管程的支持</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<p>管程的概念</p>
+<p>管程 (英语：Moniters，也称为监视器) 是一种程序结构，结构内的多个子程序（对象或模块）形成的多个工作线程互斥访问共享资源。<br>这些共享资源一般是硬件设备或一群变量。管程实现了在一个时间点，最多只有一个线程在执行管程的某个子程序。与那些通过修改数据结构实现互斥访问的并发程序设计相比，管程实现很大程度上简化了程序设计。<br>管程提供了一种机制，线程可以临时放弃互斥访问，等待某些条件得到满足后，重新获得执行权恢复它的互斥访问。</p>
+<p>一个管程包含:</p>
+<ol>
+<li>多个彼此可以交互并共用资源的线程</li>
+<li>多个与资源使用有关的变量</li>
+<li>一个互斥锁</li>
+<li>一个用来避免竞态条件的不变量</li>
+</ol>
+<p>一个管程的程序在运行一个线程前会先取得互斥锁，直到完成线程或是线程等待某个条件被满足才会放弃互斥锁。<br>若每个执行中的线程在放弃互斥锁之前都能保证不变量成立，则所有线程皆不会导致竞态条件成立。<br>当一个线程执行管程中的一个子程序时，称为占用(occupy)该管程. 管程的实现确保了在一个时间点，最多只有一个线程占用了该管程。这是管程的互斥锁访问性质。<br>当线程要调用一个定义在管程中的子程序时，必须等到已经没有其它线程在执行管程中的某个子程序。<br>在管程的简单实现中，编译器为每个管程对象自动加入一把私有的互斥锁。该互斥锁初始状态为解锁，<br>在管程的每个公共子程序的入口给该互斥锁加锁，在管程的每个公共子程序的出口给该互斥锁解锁。</p>
+<h3 id="条件变量(Condition_Variable)"><strong>条件变量(Condition Variable)</strong></h3><p>管程提供了一种实现互斥的简便途径，但这还不够。我们还需要一种办法使得线程在无法继续运行时被阻塞。<br>在生产者-消费者问题中，很容易将针对缓冲区满和缓冲区空的测试放到管程过程中，但是生产者在发现缓冲区满的时候如何阻塞呢？<br>解决的方法是引入条件变量（condition variables）以及相关的两个操作：wait和signal。<br>当一个管程过程发现它无法继续运行时（例如，生产者发现缓冲区满），它会在某个条件变量上（如full）执行wait操作。<br>该操作导致调用进程自身阻塞，并且还将另一个以前等在管程之外的进程调入管程。<br>另一个线程，比如消费者，可以唤醒正在睡眠的伙伴进程，这可以通过对其伙伴正在等待的一个条件变量执行signal完成。<br>为了避免管程中同时有两个活跃进程，如果在一个条件变量上有若干进程正在等待，则在对该条件变量执行signal操作后，系统调度程序只能在其中选择一个使其恢复运行。</p>
+<p>线程可能需要等待某个条件P为真，才能继续执行。在一个忙等待(busy waiting)循环中<br>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/notify/">notify</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/wait/">wait</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/管程/">管程</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Java/">Java</a>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a  href="/2015/07/29/Java对管程的支持/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-Java实现生产者消费者问题与读者写者问题" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/07/29/Java实现生产者消费者问题与读者写者问题/" class="article-date">
+  	<time datetime="2015-07-29T05:23:00.000Z" itemprop="datePublished">2015-07-29</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/07/29/Java实现生产者消费者问题与读者写者问题/">Java实现生产者消费者问题与读者写者问题</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h3 id="1、生产者消费者问题">1、生产者消费者问题</h3><p><img src="http://static.oschina.net/uploads/img/201507/29132343_WUwN.gif" alt="此处输入图片的描述"></p>
+<p> 生产者消费者问题是研究多线程程序时绕不开的经典问题之一，它描述是有一块缓冲区作为仓库，生产者可以将产品放入仓库，消费者则可以从仓库中取走产品。解决生产者/消费者问题的方法可分为两类：（1）采用某种机制保护生产者和消费者之间的同步；（2）在生产者和消费者之间建立一个管道。第一种方式有较高的效率，并且易于实现，代码的可控制性较好，属于常用的模式。第二种管道缓冲区不易控制，被传输数据对象不易于封装等，实用性不强。</p>
+<p>同步问题核心在于：如何保证同一资源被多个线程并发访问时的完整性。常用的同步方法是采用信号或加锁机制，保证资源在任意时刻至多被一个线程访问。Java语言在多线程编程上实现了完全对象化，提供了对同步机制的良好支持。在Java中一共有五种方法支持同步，其中前四个是同步方法，一个是管道方法。</p>
+<ul>
+<li>wait() / notify()方法</li>
+<li>await() / signal()方法</li>
+<li>BlockingQueue阻塞队列方法</li>
+<li>Semaphore方法</li>
+<li>PipedInputStream / PipedOutputStream</li>
+</ul>
+<h4 id="1-1_wait()_/_notify()方法">1.1 wait() / notify()方法</h4><p>wait() / nofity()方法是基类Object的两个方法，也就意味着所有Java类都会拥有这两个方法，这样，我们就可以为任何对象实现同步机制。</p>
+<p>wait()方法：当缓冲区已满/空时，生产者/消费者线程停止自己的执行，放弃锁，使自己处于等等状态，让其他线程执行。</p>
+<p>notify()方法：当生产者/消费者向缓冲区放入/取出一个产品时，向其他等待的线程发出可执行的通知，同时放弃锁，使自己处于等待状态。</p>
+<p>各起了4个生产者，4个消费者 </p>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/BlockingQueue/">BlockingQueue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PipedInputStream/">PipedInputStream</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ReentrantLock/">ReentrantLock</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/synchronized/">synchronized</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/生产者与消费者/">生产者与消费者</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读者写者/">读者写者</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Java/">Java</a>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a  href="/2015/07/29/Java实现生产者消费者问题与读者写者问题/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-再谈notify和notifyAll的区别和相同" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/07/21/再谈notify和notifyAll的区别和相同/" class="article-date">
+  	<time datetime="2015-07-21T04:50:00.000Z" itemprop="datePublished">2015-07-21</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/07/21/再谈notify和notifyAll的区别和相同/">再谈notify和notifyAll的区别和相同</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<p>关于在java中notify和notifyAll，经常有人有以下的说法：</p>
+<p>notify只会通知一个在等待的对象，而notifyAll会通知所有在等待的对象，并且所有对象都会继续运行<br>并且，好像都有例子可以证明。上面的说法，可以说对，也可以说不对。究其原因，在于其中有一点很关键，官方的说法如下所示：</p>
+<blockquote>
+<p>wait,notify,notifyAll:此方法只应由作为此对象监视器的所有者的线程来调用。通过以下三种方法之一，线程可以成为此对象监视器的所有者：</p>
+<ol>
+<li>通过执行此对象的同步实例方法。</li>
+<li>通过执行在此对象上进行同步的 synchronized 语句的正文。</li>
+<li>对于 Class 类型的对象，可以通过执行该类的同步静态方法。<br>一次只能有一个线程拥有对象的监视器。</li>
+</ol>
+</blockquote>
+<p>以上说法，摘自javadoc。意思即，在调用中，必须持有对象监视器(即锁），我们可以理解为需要在synchronized方法内运行。那么由此话的隐含意思，即如果要继续由同步块包含的代码块，需要重新获取锁才可以。这句话，在javadoc中这样描述：</p>
+<blockquote>
+<p>wait<br>此方法导致当前线程（称之为 T）将其自身放置在对象的等待集中，然后放弃此对象上的所有同步要求。出于线程调度目的，在发生以下四种情况之一前，线程 T 被禁用，且处于休眠状态：<br>其他某个线程调用此对象的 notify 方法，并且线程 T 碰巧被任选为被唤醒的线程。<br>其他某个线程调用此对象的 notifyAll 方法。<br>其他某个线程中断线程 T。<br>大约已经到达指定的实际时间。但是，如果 timeout 为零，则不考虑实际时间，在获得通知前该线程将一直等待。然后，从对象的等待集中删除线程 T，并重新进行线程调度。然后，该线程以常规方式与其他线程竞争，以获得在该对象上同步的权利；一旦获得对该对象的控制权，该对象上的所有其同步声明都将被恢复到以前的状态，这就是调用 wait方法时的情况。然后，线程 T 从 wait 方法的调用中返回。所以，从 wait 方法返回时，该对象和线程 T 的同步状态与调用 wait 方法时的情况完全相同。</p>
+</blockquote>
+<p>即必须重新进行获取锁，这样对于notifyAll来说，虽然所有的线程都被通知了。但是这些线程都会进行竞争，且只会有一个线程成功获取到锁，在这个线程没有执行完毕之前，其他的线程就必须等待了（只是这里不需要再notifyAll通知了，因为已经notifyAll了，只差获取锁了）有如下一个代码，可以重现这个现象。<br>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/notify/">notify</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/notifyAll/">notifyAll</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Java/">Java</a>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a  href="/2015/07/21/再谈notify和notifyAll的区别和相同/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-深度译文：机器学习那些事" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/07/07/深度译文：机器学习那些事/" class="article-date">
+  	<time datetime="2015-07-07T10:28:00.000Z" itemprop="datePublished">2015-07-07</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/07/07/深度译文：机器学习那些事/">深度译文：机器学习那些事</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<p>非常好的机器学习的译文，记录下，每次看了都有不同收获。</p>
+<p>【原题】<a href="http://homes.cs.washington.edu/~pedrod/papers/cacm12.pdf">A Few Useful Things to Know About Machine Learning</a><br>【译题】机器学习的那些事<br>【作者】<a href="http://homes.cs.washington.edu/~pedrod/">Pedro Domingos</a><br>【译者】刘知远</p>
+<p>【说明】译文载于《中国计算机学会通讯》 第 8 卷 第 11 期 2012 年 11 月 ，本文译自Communications of the ACM 2012年第10期的“A Few Useful Things to Know About Machine Learning”一文。</p>
+<p>机器学习系统自动地从数据中学习程序。与手工编程相比，这非常吸引人。在过去的20年中，机器学习已经迅速地在计算机科学等领域普及。机器学习被用于网络搜索、垃圾邮件过滤、推荐系统、广告投放、信用评价、欺诈检测、股票交易和药物设计等应用。</p>
+<p>麦肯锡全球研究院（the McKinsey Global Institute）最近一份报告指出，机器学习（又称数据挖掘或者预测分析）将驱动下一轮创新【15】。现在已经有几本优秀的机器学习教材书可以供感兴趣的研究者和实践者使用（例如米切尔（Mitchell）和维滕（Witten）等人的教材【16,24】）。但是，成功使用机器学习所应掌握的大量“民间知识”并没有出现在这些教材中。因此，很多机器学习项目浪费了大量时间，甚深入了解所需的“民间知识”可推进机器学习的应用。至最终也没有得到理想的结果。其实这些“民间知识”非常容易理解。本文的目的就是介绍这些知识。</p>
+<p>机器学习有许多不同的类型，但为了展示方便，本文将主要介绍其中最常用的类型：分类。但是，本文所探讨的问题适用于所有的机器学习类型。一个分类器（classifier）是一个系统，系统输入是一个包括若干离散或连续的特征值（feature values）的向量，系统输出是一个离散值，代表分类的类别（class）。例如，一个垃圾邮件过滤器会将邮件信息分类到“是垃圾邮件”和“不是垃圾邮件”两个类别中。它的输入可以是一个布尔向量 x=(x1,…,xj,…,xd) ，其中如果词典中的第 j 个词出现在该邮件中，则 xj=1，否则 xj=0 。一个学习器将一个训练集（trainingset）样例 (xi,yi) 作为输入，其中xi=(xi,1,…,xi,d) 是观察到的输入，yi 是相应的输出，学习器的输出是一个分类器。对学习器的检验就是判断它输出的分类器是否能够对将来的输入样例 xt 输出正确的 yt（例如，垃圾邮件过滤器是否能够将训练时没有见过的邮件信息正确分类）。</p>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/机器学习/">机器学习</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/机器学习/">机器学习</a>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a  href="/2015/07/07/深度译文：机器学习那些事/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-机器学习的可行性" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -610,223 +905,10 @@
 
 
   
-    <article id="post-关于判断素数的一些算法" class="article article-type-post" itemscope itemprop="blogPost">
   
-    <div class="article-meta">
-      <a href="/2015/05/16/关于判断素数的一些算法/" class="article-date">
-  	<time datetime="2015-05-16T06:56:00.000Z" itemprop="datePublished">2015-05-16</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/05/16/关于判断素数的一些算法/">关于判断素数的一些算法</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
-<p>最近在hdu上A题</p>
-<p>碰到些素数问题，记录下看到的算法。</p>
-<hr>
-<h3 id="一、筛选法">一、筛选法</h3><p>题目:<a href="http://acm.hdu.edu.cn/showproblem.php?pid=2136" target="_blank" rel="external">http://acm.hdu.edu.cn/showproblem.php?pid=2136</a></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.BufferedReader;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStreamReader;</span><br><span class="line"><span class="keyword">import</span> java.io.StreamTokenizer;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException</span><br><span class="line">    </span>&#123;</span><br><span class="line">        StreamTokenizer st = <span class="keyword">new</span> StreamTokenizer(<span class="keyword">new</span> BufferedReader(</span><br><span class="line">                <span class="keyword">new</span> InputStreamReader(System.in)));</span><br><span class="line">        <span class="keyword">int</span>[] arr = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">1000001</span>];</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> temp;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt; <span class="number">1000000</span>; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (arr[i] == <span class="number">0</span>)<span class="comment">//只用判断不被前面“筛选掉的数字”</span></span><br><span class="line">            &#123;</span><br><span class="line">                temp = i;</span><br><span class="line">                <span class="keyword">while</span> (temp &lt; <span class="number">1000000</span>)<span class="comment">//这里就是筛选数字，把i的整数倍的数字都挖掉</span></span><br><span class="line">                &#123;                     <span class="comment">//因为肯定有&lt;span&gt;&lt;/span&gt;因子i，则一定不是素数。</span></span><br><span class="line">                    arr[temp] = count;<span class="comment">//此处的赋值是因为题目的要求有点小改变，筛选法只用分别出素数和非素数</span></span><br><span class="line">                    temp = temp + i;</span><br><span class="line">                &#125;</span><br><span class="line">                count++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> n;</span><br><span class="line">        <span class="keyword">while</span> (st.nextToken() != StreamTokenizer.TT_EOF)</span><br><span class="line">        &#123;</span><br><span class="line">            n = (<span class="keyword">int</span>) st.nval;</span><br><span class="line">            System.out.println(arr[n]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>思想很简单：</p>
-<ol>
-<li>先将1挖掉(因为1不是素数)。</li>
-<li>用2去除它后面的各个数，把能被2 整除的数挖掉，即把2的倍数挖掉。</li>
-<li>用3去除它后面的各数，把3的倍数挖掉。</li>
-<li>分别用5…各数作为除数去除这些数以后的各数。<br>上述操作需要一个很大的容器去装载所有数的集合，只要满足上述条件，即2的倍数大于1的全部置0，3的倍数大于1的全部置0，4的倍数大于1的全部置0.。。。一直到这个数据集合的末尾，这样一来不为0的数就是素数了，然后按下标在里面进行查找就好了</li>
-</ol>
-<h3 id="二、米勒拉宾算法">二、米勒拉宾算法</h3><p>算法思想：<a href="http://www.cnblogs.com/skyivben/archive/2010/07/10/1775001.html" target="_blank" rel="external">http://www.cnblogs.com/skyivben/archive/2010/07/10/1775001.html</a></p>
-<p>看了一下看不懂，记录下有这种算法思想。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/筛选法/">筛选法</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/米勒拉宾算法/">米勒拉宾算法</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/ACM/">ACM</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-java类实现serializable有什么好处或意义" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/05/08/java类实现serializable有什么好处或意义/" class="article-date">
-  	<time datetime="2015-05-08T10:34:00.000Z" itemprop="datePublished">2015-05-08</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/05/08/java类实现serializable有什么好处或意义/">java类实现serializable有什么好处或意义</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>一个对象序列化的接口，一个类只有实现了Serializable接口，它的对象才是可序列化的。因此如果要序列化某些类的对象，这些类就必须实现Serializable接口。而实际上，Serializable是一个空接口，没有什么具体内容，它的目的只是简单的标识一个类的对象可以被序列化。 好处： </p>
-<ul>
-<li><p>比如说你的内存不够用了，那计算机就要将内存里面的一部分对象暂时的保存到硬盘中，等到要用的时候再读入到内存中，硬盘的那部分存储空间就是所谓的虚拟内存。在比如过你要将某个特定的对象保存到文件中，我隔几天在把它拿出来用，那么这时候就要实现Serializable接口； </p>
-</li>
-<li><p>在进行java的Socket编程的时候，你有时候可能要传输某一类的对象，那么也就要实现Serializable接口；最常见的你传输一个字符串，它是JDK里面的类，也实现了Serializable接口，所以可以在网络上传输。</p>
-</li>
-<li><p>如果要通过远程的方法调用（RMI）去调用一个远程对象的方法，如在计算机A中调用另一台计算机B的对象的方法，那么你需要通过JNDI服务获取计算机B目标对象的引用，将对象从B传送到A，就需要实现序列化接口。</p>
-</li>
-</ul>
-<p>例如:</p>
-<p>在web 开发中，如果对象被保存在了Session 中，tomcat 在重启时要把Session 对象序列化到硬盘，这个对象就必须实现Serializable接口。</p>
-<p>如果对象要经过分布式系统 进行网络传输或通过rmi 等远程调用，这就需要在网络上传输对象，被传输的对象就必 须实现Serializable接口。</p>
-<p>记录一下知识盲点。</p>
-<h3 id="参考资料">参考资料</h3><ol>
-<li><a href="http://zhidao.baidu.com/link?url=2jX9tXXp-hMA5AcFstKTocpMq1oKdxA7Baed81ypgz7sCMC5DU192v5hIoZe-xSD" target="_blank" rel="external">http://zhidao.baidu.com/link?url=2jX9tXXp-hMA5AcFstKTocpMq1oKdxA7Baed81ypgz7sCMC5DU192v5hIoZe-xSD</a>…</li>
-</ol>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/serializable/">serializable</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/Java/">Java</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-spring的jdbctemplate与hibernate" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/05/06/spring的jdbctemplate与hibernate/" class="article-date">
-  	<time datetime="2015-05-06T07:50:00.000Z" itemprop="datePublished">2015-05-06</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/05/06/spring的jdbctemplate与hibernate/">spring的jdbctemplate与hibernate</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>最近在看spring，发现jdbctemplate也能很好地对数据库CRUD，那么产生了如摘要的疑问，在此记录一下，红色字体为重点。</p>
-<ul>
-<li>JDBCTemplate是Spring对jdbc的封装，但sql还是得自己写，一旦要写sql，则会增加灵活和复杂性，当然也<font color="red">不利于跨数据库</font>（毕竟每个数据库的实现产品的sql也不竟相同）。<br>若使用hibernate则不用关心底层的数据库是哪个数据库，在编程方面，也更<font color="red">对象化了</font>，比如 save(Object obj),我们操作的都是对象。hibernate也利用了<font color="red">缓存</font>产生实现与数据库的读取操作，<font color="red">提高性能</font>太多了。</li>
-<li>现在许多项目都采用hibernateTemplate和JDBCTemplate<font color="red">混用</font>的方式<br> HibernateTemplate一般是为了<font color="red">加快开发效率</font>，还有就是使用Hibernate的时候,更简洁,更便利,而<font color="red">统一的声明事务</font>,又让本来就已经很简洁的Hibernate对事务的处理,大大简化 但任何事务都有两面性,在带来大量便捷的同时,Hibernate也给我们留下了一点小小的遗憾,比如众所周知的,<font color="red">在处理大批量数据查询的时候,Hibernate的查询效率,是不尽人意的,有人做过测试,在高并发查询的时候,hibernate的查询效率,仅仅相当于使用jdbc效率7成左右</font>,这对于对速度有着很高要求的互联网应用来说,不能不说是悲剧。<br> Hibernate在做批量操作时，效率不是很理想。所以现在采用JDBCTemplate和Hibernate混用，这时有几个注意事项:   </li>
-</ul>
-<ol>
-<li>如果采用JDBCTemplate的部分只涉及到查询，则可以使用Hibernate的应用缓存，即二级缓存。 </li>
-<li>如果采用JDBCTemplate的部分涉及到对数据库的更新操作,即增，删，改.则不能开启Hibernate的二级缓存，如果系统有缓存的需要，我觉得可以自己在逻辑层实现缓存.Java的缓存方案还是很多的。</li>
-<li>在使用Spring做为容器的系统中，混用JDBCTemplate和Hibernate，事务管理请统一使用HibernateTransactionManager，前提是JDBCTemplate和Hibernate共用一个DataSource.</li>
-</ol>
-<p>在此我只是对资料的汇合。</p>
-<h3 id="参考资料：">参考资料：</h3><p>1.<a href="http://bbs.csdn.net/topics/330256418" target="_blank" rel="external">http://bbs.csdn.net/topics/330256418</a><br>2.<a href="http://zhidao.baidu.com/link?url=UMlaR3oPG9mtIEh748IyUlZhWILd2RIA9AxVPbd_BeUuL-cF0184pQQwzm_AimEYS6y5og38skL4xWHoX11bDq" target="_blank" rel="external">http://zhidao.baidu.com/link?url=UMlaR3oPG9mtIEh748IyUlZhWILd2RIA9AxVPbd_BeUuL-cF0184pQQwzm_AimEYS6y5og38skL4xWHoX11bDq</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hibernate/">hibernate</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jdbctemplate/">jdbctemplate</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spring/">spring</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/Web开发/">Web开发</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
 </div>
       <footer id="footer">
