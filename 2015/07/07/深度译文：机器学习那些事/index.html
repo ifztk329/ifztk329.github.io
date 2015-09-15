@@ -15,12 +15,12 @@
 <meta property="og:description" content="非常好的机器学习的译文，记录下，每次看了都有不同收获。
 【原题】A Few Useful Things to Know About Machine Learning【译题】机器学习的那些事【作者】Pedro Domingos【译者】刘知远
 【说明】译文载于《中国计算机学会通讯》 第 8 卷 第 11 期 2012 年 11 月 ，本文译自Communications of the ACM 2012">
-<meta property="og:image" content="http://static.oschina.net/uploads/img/201507/07182831_jDIt.jpg">
-<meta property="og:image" content="http://static.oschina.net/uploads/img/201507/07182831_3Net.jpg">
-<meta property="og:image" content="http://static.oschina.net/uploads/img/201507/07182831_1woT.jpg">
-<meta property="og:image" content="http://static.oschina.net/uploads/img/201507/07182831_Dm9U.jpg">
-<meta property="og:image" content="http://static.oschina.net/uploads/img/201507/07182831_QI7D.jpg">
-<meta property="og:updated_time" content="2015-07-31T07:33:46.125Z">
+<meta property="og:image" content="http://7xksnm.com1.z0.glb.clouddn.com/07182831_jDIt.jpg">
+<meta property="og:image" content="http://7xksnm.com1.z0.glb.clouddn.com/07182831_3Net.jpg">
+<meta property="og:image" content="http://7xksnm.com1.z0.glb.clouddn.com/07182831_1woT.jpg">
+<meta property="og:image" content="http://7xksnm.com1.z0.glb.clouddn.com/07182831_Dm9U.jpg">
+<meta property="og:image" content="http://7xksnm.com1.z0.glb.clouddn.com/07182831_QI7D.jpg">
+<meta property="og:updated_time" content="2015-09-15T13:35:16.497Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深度译文：机器学习那些事">
 <meta name="twitter:description" content="非常好的机器学习的译文，记录下，每次看了都有不同收获。
@@ -248,8 +248,8 @@
 <h4 id="表示（Representation）">表示（Representation）　</h4><p>   一个分类器必须用计算机可以处理的某种形式语言来表示。反过来讲，为学习器选择一种表示，就意味选择一个特定的分类器集合。学习器可能学出的分类器只能在这个集合中。这个集合被称为学习器的假设空间（hypothesis space）。如果某个分类器不在该空间中，它就不可能被该学习器学到。与此相关的一个问题是如何表示输入，即使用哪些特征，本文稍后介绍。</p>
 <h4 id="评价（Evaluation）">评价（Evaluation）</h4><p>我们需要一个评价函数（亦称为目标函数或打分函数）来判断分类器的优劣。机器学习算法内部使用的评价函数和我们希望分类器进行优化的外部评价函数有所不同。这是为了便于优化，接下来会讨论。</p>
 <h4 id="优化（Optimization）">优化（Optimization）</h4><p>最后，我们需要一个搜索方法，能够在假设空间中找到评价函数得分最高的那个分类器。优化技术的选择对学习器效率至关重要；而当评价函数有多个最优结果时，优化技术也有助于从中选择。初学者通常会采用现成的优化方法，之后再用定制专门的优化方法来替代。表 1 展示了三个组成部分常见的例子。例如，对一个测试样例， k-近邻方法会寻找它的 k 个最相似的训练样例，并将这些样例中出现最多的类别作为该测试样例的类别。超平面方法会为每一个类别构造一个特征的线性组合，并将得分最高的组合所对应的类别作为预测结果。决策树方法会在树上的每个内部节点测试一个特征，每个特征值会对应一个分支，而不同的叶子节点会对应不同的类别。算法 1 展示了一个极简单的二分类决策树学习器，其中使用了信息增益（informationgain）和贪心搜索（greedysearch）【20】。InfoGain(xj,y ) 表示特征 xj 与类别 y 之间的互信息（mutualinformation）。 MakeNode(x,c0,c1 ) 会返回一个测试特征 x 的节点，该节点以 c0 作为 x= 0 时的孩子节点，以 c1 作为 x= 1 时的孩子节点。</p>
-<p><img src="http://static.oschina.net/uploads/img/201507/07182831_jDIt.jpg" alt="此处输入图片的描述"></p>
-<p><img src="http://static.oschina.net/uploads/img/201507/07182831_3Net.jpg" alt="此处输入图片的描述"></p>
+<p><img src="http://7xksnm.com1.z0.glb.clouddn.com/07182831_jDIt.jpg" alt="此处输入图片的描述"></p>
+<p><img src="http://7xksnm.com1.z0.glb.clouddn.com/07182831_3Net.jpg" alt="此处输入图片的描述"></p>
 <p>当然，并不是表 1 中从各列选出元素的相互组合都同样有意义。例如，离散表示很自然地与组合优化相结合；而连续表示则与连续优化相结合。然而，很多学习器同时包含离散和连续的部分。实际上，所有可能的组合也都快被实现过了。</p>
 <p>大部分教科书是以表示为视角组织内容的。这通常会让人忽略掉一个事实，即其他部分也同样重要。虽然对如何在每个部分做出选择并没有简单的秘诀，但本文将涉及其中几个重要的问题。正如我们以后会看到的那样，机器学习项目中的某些选择甚至比学习器的选择更加重要。</p>
 <h3 id="泛化（Generalization）很重要">泛化（Generalization）很重要</h3><p>机器学习的基本目标是对训练集合中样例的泛化。这是因为，不管我们有多少训练数据，在测试阶段这些数据都不太可能会重复出现。（注意，如果在词典中有 100000个词，前述垃圾邮件过滤器将会有种 2100000 种可能的不同输入）。</p>
@@ -261,10 +261,10 @@
 <p>说到这里，学习需要知识，这并不让人惊讶。机器学习不是魔术，它无法凭空变出东西。它所做的是由少变多。编程就像所有的工程技术那样，意味着大量的工作，必须从头开始建造一切。而机器学习更像是种田，它让大自然做大部分工作。农夫将种子与肥料混合种出庄稼。学习器将知识和数据结合“种出”程序。</p>
 <h3 id="过拟合（Overfitting）有多张面孔">过拟合（Overfitting）有多张面孔</h3><p> 如果我们拥有的知识和数据并不足以学习出正确的分类器，将会怎样呢？我们就得冒风险构建一个分类器（或者其中一部分），这个分类器并非建立在现实基础上，而是将数据随机表现加以解读。这个问题称为过拟合，它是机器学习中的棘手问题。当你的学习器输出的分类器在训练数据上准确率为 100%，而在测试数据上仅有 50% 的时候（而本来可以学到一个分类器能够在两个数据上均达到 75% 的准确率），说明这个分类器发生过拟合了。</p>
 <p>机器学习领域的每个人都了解过拟合，但过拟合会以多种并不明显的形式出现。一种理解过拟合的方式是将泛化误差（generalization error）分解为偏置（bias）和方差（ variance）【9】。偏置度量了学习器倾向于一直学习相同错误的程度。方差则度量了学习器倾向于忽略真实信号、学习随机事物的程度。图 1用朝板子扔飞镖作为类比进行了直观说明。</p>
-<p><img src="http://static.oschina.net/uploads/img/201507/07182831_1woT.jpg" alt="此处输入图片的描述"></p>
+<p><img src="http://7xksnm.com1.z0.glb.clouddn.com/07182831_1woT.jpg" alt="此处输入图片的描述"></p>
 <p>一个线性学习器有较高的偏置，因为当两个类别的交界不是超平面的时候，这个学习器就无法进行归纳（摘注：原文 A linear learner has high bias, because when the frontier between two classes is not a hyper-plane the learner is unable<br>to induce it）。决策树就不会有这个问题，因为它可以表示任意的布尔函数，但在另一方面，决策树会面临高方差的问题：在同一现象所产生的不同训练数据上学习的决策树往往差异巨大，而实际上它们应当是相同的。类似道理也适用于优化方法的选择上：与贪心搜索相比，柱搜索的偏置较低，但方差较高，原因是柱搜索会尝试搜索更多的假设。因此，与直觉相反，一个学习能力更强的学习器并不见得比学习能力弱的效果更好。</p>
 <p>图 2 示例说明了这一点（注：训练样例含有 64 个布尔类型特征和 1 个根据一个集合的“如果…那么…”的规则集合计算得到的布尔类型的类别。图中的曲线是对 100 次运行结果的平均，每次对应不同的随机产生的规则集合。误差条（error bar）代表两个标准方差。具体细节请参考论文【10】）。即使真正的分类器是一个规则集合，但根据 1000个样例学习的朴素贝叶斯学习器（摘注：原文 <a href="https://en.wikipedia.org/wiki/Naive_Bayes_classifier" target="_blank" rel="external">Naive Bayes</a>）仍比一个规则学习器的准确率更高。甚至当朴素贝叶斯错误地假设分类面是线性的，也依然如此。这种情形在机器学习领域很常见：一个强错误假设比那些弱正确假设更好，这是因为后者需要更多的数据才能避免过拟合。</p>
-<p><img src="http://static.oschina.net/uploads/img/201507/07182831_Dm9U.jpg" alt="此处输入图片的描述"></p>
+<p><img src="http://7xksnm.com1.z0.glb.clouddn.com/07182831_Dm9U.jpg" alt="此处输入图片的描述"></p>
 <p>交叉验证可以帮助避免过拟合，例如通过交叉验证来选择决策树的最佳大小。但这不能彻底解决问题，因为假如我们利用交叉验证做太多的参数选择，它本身就会开始过拟合【17】。</p>
 <p>除了交叉验证以外，还有很多方法可以避免过拟合。最常用的方法是对评价函数增加一个正则项（regularization term）。这样做可以惩罚那些包含更多结构的分类器，偏好更小的分类器，从而降低过拟合的可能性。另一个方案是在决定是否增加新的结构时进行诸如卡方测试（<a href="https://en.wikipedia.org/wiki/Chi-squared_test" target="_blank" rel="external">chi-squre</a>）等统计显著性检验（<a href="https://en.wikipedia.org/wiki/Statistical_hypothesis_testing" target="_blank" rel="external">statistical significance test</a>），用来决定类别分布是否会因为增加这个结构而不同。当数据非常缺乏时，这些技术非常有用。然而，你应该对那些宣称某项技术“解决”了过拟合问题的说法持怀疑态度。我们会很容易在避免过拟合（或者说“方差”）时，造成另外一个相反的错误—— 欠拟合（ underfitting，或者说“偏置”）。要学习一个完美的分类器来同时避免过拟合和欠拟合，事先又没有足够知识，这种情形下没有任何单一技术能够总是表现最好（没有免费的午餐）。</p>
 <p>对过拟合的一个常见误解是认为它是由噪音造成的，例如有些训练样例的标注类别是错误的。这的确会加剧过拟合，因为分类器会调整分类面让那些样例保持在分类器认为正确的一侧。但是即使没有噪音依然会发生严重的过拟合。例如，假如我们学习一个布尔类型分类器，它是训练数据中所有标为“true”的样例的析取（disjunction）。（换句话说，这个分类器是一个析取范式（disjunctive normal form）的布尔类型公式，其中每一项是某个特定训练样例的所有特征值的合取（conjunction）。）这个分类器对所有的训练样例都分类正确，但对测试样例中的每个正例都分类错误，不管训练数据是否有噪音。</p>
@@ -287,7 +287,7 @@
 <h3 id="更多的数据胜过更聪明的算法">更多的数据胜过更聪明的算法</h3><p>假设你已经尽你所能构建了最好的特征集合，但分类器的效果仍不够好，这时候应该怎么办呢？有两个主要选择：设计更好的学习算法，或者收集更多数据（包括更多的样例和不致造成维度灾难的更多可能的原始特征）。机器学习研究者更关注前者，但从实用角度来看，最快捷的方法是收集更多数据。作为一条经验，有大量数据的笨算法要胜过数据量较少的聪明算法。（毕竟，机器学习就是研究如何让数据发挥作用的。）</p>
 <p>然而这带来了另外一个问题：可扩展性（scalability）。在绝大多数计算机科学问题中，两个主要资源是有限的——时间和内存。而在机器学习中，还有第三个：训练数据（摘注：原文training data ）。其中哪一个资源会成为瓶颈是随着时间变化而不断变化的。在20世纪80年代，瓶颈是数据。现在的瓶颈则是时间。我们有海量数据，但没有足够的时间处理它们，只能弃之不用。这就造成一个悖论：即使理论上说，更多数据意味着我们可以学习更复杂的分类器，但在实践中由于复杂分类器需要更多的学习时间，我们只能选用更简单的分类器。一个解决方案是对复杂分类器提出快速学习算法，在这个方向上已经有了一些引人注目的进展（例如赫尔滕（Hulten）和多明戈斯（Domingos）的工作【11】）。</p>
 <p>采用更聪明的算法得到的回报比预期要少，一部分原因是，机器学习的工作机制基本上是相同的。这个论断也许让你吃惊，特别是当你想到诸如规则集与神经网络之间差异巨大的表示方法的时候。但实际上，命题规则的确可以轻易地表示成神经网络，其他表示之间也有类似的关系。本质上所有的学习器都是将临近的样例归类到同一个类别中；关键的不同之处在于“临近”的意义。对于非均匀分布的数据，不同的学习器可以产生迥乎不同的分类边界，同时仍能在关心的领域（即那些有大量训练样例、测试样例也会有很大概率出现的领域）保证得到相的预测结果。这也有助于解释为什么能力强的学习器虽然不稳定却仍然很精确。图 3在二维空间展示了这一点，在高维空间这个效应会更强。</p>
-<p><img src="http://static.oschina.net/uploads/img/201507/07182831_QI7D.jpg" alt="此处输入图片的描述"></p>
+<p><img src="http://7xksnm.com1.z0.glb.clouddn.com/07182831_QI7D.jpg" alt="此处输入图片的描述"></p>
 <p>作为一条规则，首先尝试最简单的学习器总是有好处的（例如应该在逻辑斯蒂回归之前先尝试朴素贝叶斯，在支持向量机之前先尝试近邻 [ 摘注：原文， naïve Bayes <a href="https://en.wikipedia.org/wiki/Logistic_regression" target="_blank" rel="external">before logistic regression</a>, k-nearest neighbor before <a href="https://en.wikipedia.org/wiki/Support_vector_machine" target="_blank" rel="external">support vector machines</a>)]）。更复杂的分类器固然诱人，但它们通常比较难驾驭，原因包括我们需要调节更多的参数才能得到好的结果，以及它们的内部机制更不透明。</p>
 <p>学习器可以分为两大类：一类的表示是大小不变的，比如线性分类器（摘注：原文 <a href="https://en.wikipedia.org/wiki/Linear_classifier" target="_blank" rel="external">linear classifiers</a>）；另一类的表示会随着数据而增长，比如决策树（摘注：原文 <a href="https://en.wikipedia.org/wiki/Decision_tree" target="_blank" rel="external">decisiontrees</a>）。（后者有时候会被称为非参数化学习器（nonparametric learners），但不幸的是，它们通常需要比参数化学习器学习更多的参数。）数据超过一定数量后，大小不变的学习器就不能再从中获益。（注意图 2 中朴素贝叶斯的准确率是如何逼近大约 70%的。）而如果有足够的数据，大小可变的学习器理论上可以学习任何函数，但实际上却无法做到。这主要是受到算法（例如贪心搜索会陷入局部最优）和计算复杂度的限制。而且，由于维度灾难，再多的数据也不会够。正是由于这些原因，只要你努力，聪明的算法——那些充分利用已有数据和计算资源的算法——最后总能取得成功。在设计学习器和学习分类器之间并没有明显的界限；因为任何知识要么可以被编码进学习器，要么可以从数据中学到。所以，机器学习项目通常会有学习器设计这一重要部分，机器学习实践者应当在这方面积累一些专门知识【12】。</p>
 <p>终极而言，最大的瓶颈既不是数据，也不是 CPU速度，而是人力。在研究论文中，学习器一般都在准确率和计算复杂度方面进行比较。但更重要的是节省的人力和得到的知识，虽然这些更难度量。这使那些产生人类可理解的输出的学习器（比如规则集合）更为受到青睐。机器学习成果最丰硕的，是那些建立了机器学习的基本条件，能够便捷地在多个学习器、数据来源和学习问题上方便有效地开展实验，并实现机器学习专家与领域专家的密切合作的组织。</p>
