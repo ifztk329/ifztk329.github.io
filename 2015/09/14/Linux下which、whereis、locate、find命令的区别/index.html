@@ -3,27 +3,33 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Java中的静态内部类 | Zhangtk&#39;s Blog</title>
+  <title>Linux下which、whereis、locate、find命令的区别 | Zhangtk&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在学静态内部类的时候产生了一个疑问，静态内部类到底存放在哪里了？
+  <meta name="description" content="我们经常在linux要查找某个文件，但不知道放在哪里了，可以使用下面的一些命令来搜索。这些是从网上找到的资料(参考资料1)，因为有时很长时间不会用到，当要用的时候经常弄混了，所以放到这里方便使用。 
 
-Java中的内存有一块地址叫静态代码区所有静态类都是放在这里的，静态类随JVM启动后就在那，不会说程序停止了，它就被垃圾回收器回收，而new是实例化的命令，它会在java中的内存中的堆区，创建一个对象，注意它们的位置，一个是在静态代码区；一个是在堆区，new出来的对象，一旦程序运行完，它就会被垃圾回收器回收。
-下面解释下静态代码区">
+which       查看可执行文件的位置 
+whereis    查看文件的位置 
+locate       配合数据库查看文件位置 
+find          实际搜寻硬盘查询文件名称 (f">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java中的静态内部类">
-<meta property="og:url" content="http://zhangtk.com/2015/05/19/Java中的静态内部类/index.html">
+<meta property="og:title" content="Linux下which、whereis、locate、find命令的区别">
+<meta property="og:url" content="http://zhangtk.com/2015/09/14/Linux下which、whereis、locate、find命令的区别/index.html">
 <meta property="og:site_name" content="Zhangtk's Blog">
-<meta property="og:description" content="在学静态内部类的时候产生了一个疑问，静态内部类到底存放在哪里了？
+<meta property="og:description" content="我们经常在linux要查找某个文件，但不知道放在哪里了，可以使用下面的一些命令来搜索。这些是从网上找到的资料(参考资料1)，因为有时很长时间不会用到，当要用的时候经常弄混了，所以放到这里方便使用。 
 
-Java中的内存有一块地址叫静态代码区所有静态类都是放在这里的，静态类随JVM启动后就在那，不会说程序停止了，它就被垃圾回收器回收，而new是实例化的命令，它会在java中的内存中的堆区，创建一个对象，注意它们的位置，一个是在静态代码区；一个是在堆区，new出来的对象，一旦程序运行完，它就会被垃圾回收器回收。
-下面解释下静态代码区">
-<meta property="og:updated_time" content="2015-07-31T07:35:26.604Z">
+which       查看可执行文件的位置 
+whereis    查看文件的位置 
+locate       配合数据库查看文件位置 
+find          实际搜寻硬盘查询文件名称 (f">
+<meta property="og:updated_time" content="2015-09-15T13:55:22.895Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java中的静态内部类">
-<meta name="twitter:description" content="在学静态内部类的时候产生了一个疑问，静态内部类到底存放在哪里了？
+<meta name="twitter:title" content="Linux下which、whereis、locate、find命令的区别">
+<meta name="twitter:description" content="我们经常在linux要查找某个文件，但不知道放在哪里了，可以使用下面的一些命令来搜索。这些是从网上找到的资料(参考资料1)，因为有时很长时间不会用到，当要用的时候经常弄混了，所以放到这里方便使用。 
 
-Java中的内存有一块地址叫静态代码区所有静态类都是放在这里的，静态类随JVM启动后就在那，不会说程序停止了，它就被垃圾回收器回收，而new是实例化的命令，它会在java中的内存中的堆区，创建一个对象，注意它们的位置，一个是在静态代码区；一个是在堆区，new出来的对象，一旦程序运行完，它就会被垃圾回收器回收。
-下面解释下静态代码区">
+which       查看可执行文件的位置 
+whereis    查看文件的位置 
+locate       配合数据库查看文件位置 
+find          实际搜寻硬盘查询文件名称 (f">
   
     <link rel="alternative" href="/atom.xml" title="Zhangtk&#39;s Blog" type="application/atom+xml">
   
@@ -193,11 +199,11 @@ Java中的内存有一块地址叫静态代码区所有静态类都是放在这�
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-Java中的静态内部类" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Linux下which、whereis、locate、find命令的区别" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/05/19/Java中的静态内部类/" class="article-date">
-  	<time datetime="2015-05-19T04:17:00.000Z" itemprop="datePublished">2015-05-19</time>
+      <a href="/2015/09/14/Linux下which、whereis、locate、find命令的区别/" class="article-date">
+  	<time datetime="2015-09-14T06:57:00.000Z" itemprop="datePublished">2015-09-14</time>
 </a>
     </div>
   
@@ -210,7 +216,7 @@ Java中的内存有一块地址叫静态代码区所有静态类都是放在这�
         
   
     <h1 class="article-title" itemprop="name">
-      Java中的静态内部类
+      Linux下which、whereis、locate、find命令的区别
     </h1>
   
 
@@ -219,12 +225,12 @@ Java中的内存有一块地址叫静态代码区所有静态类都是放在这�
       <div class="article-info article-info-post">
         
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/">JVM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/静态内部类/">静态内部类</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li></ul>
 	</div>
 
         
 	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/Java/">Java</a>
+	<a class="article-category-link" href="/categories/Linux/">Linux</a>
 	</div>
 
 
@@ -235,33 +241,28 @@ Java中的内存有一块地址叫静态代码区所有静态类都是放在这�
     <div class="article-entry" itemprop="articleBody">
       
         <hr>
-<p>在学静态内部类的时候产生了一个疑问，静态内部类到底存放在哪里了？</p>
-<hr>
-<p>Java中的内存有一块地址叫静态代码区所有静态类都是放在这里的，静态类随JVM启动后就在那，不会说程序停止了，它就被垃圾回收器回收，而new是实例化的命令，它会在java中的内存中的堆区，创建一个对象，注意它们的位置，一个是在<font color="red">静态代码区</font>；一个是在<font color="red">堆区</font>，new出来的对象，一旦程序运行完，它就会被垃圾回收器回收。</p>
-<h3 id="下面解释下静态代码区">下面解释下静态代码区</h3><p>首先看下方法区（代码区）</p>
-<p>方法区是系统分配的一个内存逻辑区域，是JVM在装载类文件时，用于存储类型信息的(类的描述信息)。</p>
-<p>方法区存放的信息包括：</p>
-<h4 id="1-_类的基本信息：">1. 类的基本信息：</h4><ul>
-<li>每个类的全限定名每个类的直接超类的全限定名(可约束类型转换)</li>
-<li>该类是类还是接口</li>
-<li>该类型的访问修饰符</li>
-<li>直接超接口的全限定名的有序列表<h4 id="2-_已装载类的详细信息：">2. 已装载类的详细信息：</h4></li>
-<li>运行时常量池：<br>在方法区中，每个类型都对应一个常量池，存放该类型所用到的所有常量，常量池中存储了诸如文字字符串、final变量值、类名和方法名常量。它们以数组形式通过索引被访问，是外部调用与类联系及类型对象化的桥梁。（存的可能是个普通的字符串，然后经过常量池解析，则变成指向某个类的引用）<a id="more"></a></li>
-<li>字段信息：<br>字段信息存放类中声明的每一个字段的信息，包括字段的名、类型、修饰符。字段名称指的是类或接口的实例变量或类变量，字段的描述符是一个指示字段的类型的字符串，如private A a=null;则a为字段名，A为描述符，private为修饰符</li>
-<li>方法信息：<br>类中声明的每一个方法的信息，包括方法名、返回值类型、参数类型、修饰符、异常、方法的字节码。(在编译的时候，就已经将方法的局部变量、操作数栈大小等确定并存放在字节码中，在装载的时候，随着类一起装入方法区。)</li>
-</ul>
-<p>在运行时，JVM从常量池中获得符号引用，然后在运行时解析成引用项的实际地址，最后通过常量池中的全限定名、方法和字段描述符，把当前类或接口中的代码与其它类或接口中的代码联系起来。</p>
+<p>我们经常在linux要查找某个文件，但不知道放在哪里了，可以使用下面的一些命令来搜索。这些是从网上找到的资料(参考资料1)，因为有时很长时间不会用到，当要用的时候经常弄混了，所以放到这里方便使用。 </p>
 <ul>
-<li>静态变量：这个没什么好说的，就是类变量，类的所有实例都共享，我们只需知道，在方法区有个静态区，静态区专门存放静态变量和静态块。</li>
-<li>到类classloader的引用：到该类的类装载器的引用。</li>
-<li>到类class的引用：虚拟机为每一个被装载的类型创建一个class实例，用来代表这个被装载的类。</li>
+<li>which       查看可执行文件的位置 </li>
+<li>whereis    查看文件的位置 </li>
+<li>locate       配合数据库查看文件位置 </li>
+<li>find          实际搜寻硬盘查询文件名称 (<font color="red">find也可以根据文件大小-size 时间-atime 正则表达式-regex</font>)</li>
 </ul>
-<p>由此我们可以知道反射的基础：</p>
-<p>在装载类的时候，加入方法区中的所有信息，最后都会形成Class类的实例，代表这个被装载的类。方法区中的所有的信息，都是可以通过这个Class类对象反射得到。我们知道对象是类的实例，类是相同结构的对象的一种抽象。同类的各个对象之间，其实是拥有相同的结构（属性），拥有相同的功能（方法），各个对象的区别只在于属性值的不同。<br>    同样的，我们所有的类，其实都是Class类的实例，他们都拥有相同的结构—–Field数组、Method数组。而各个类中的属性都是Field属性的一个具体属性值，方法都是Method属性的一个具体属性值。</p>
-<p>在运行时，JVM从常量池中获得符号引用，然后在运行时解析成引用项的实际地址，最后通过常量池中的全限定名、方法和字段描述符，把当前类或接口中的代码与其它类或接口中的代码联系起来。</p>
-<h3 id="参考资料：">参考资料：</h3><ol>
-<li><a href="http://zhidao.baidu.com/link?url=fPFHee1b0yBDxwi3-FCjhkliA-qtprLjqtcqDiTZM5k-G3Q3YynS4kK5Jj5C1PvTSGnBSr52-9KjhLYjQnZx1_" target="_blank" rel="external">http://zhidao.baidu.com/link?url=fPFHee1b0yBDxwi3-FCjhkliA-qtprLjqtcqDiTZM5k-G3Q3YynS4kK5Jj5C1PvTSGnBSr52-9KjhLYjQnZx1_</a></li>
-<li><a href="http://blog.csdn.net/peterwin1987/article/details/7571808" target="_blank" rel="external">http://blog.csdn.net/peterwin1987/article/details/7571808</a></li>
+<h3 id="1、which">1、which</h3><p>语法：<br>[root @redhat ~]# which 可执行文件名称<br>例如：<br>[root @redhat ~]# which passwd<br>/usr/bin/passwd<br>which是通过 <font color="red">PATH环境变量</font> 到该路径内查找可执行文件，所以基本的功能是寻找可执行文件  </p>
+<h3 id="2、whereis">2、whereis</h3><p>语法：<br>[root @redhat ~]# whereis [-bmsu] 文件或者目录名称<br>参数说明：<br>-b ： 只找二进制文件<br>-m： 只找在说明文件manual路径下的文件<br>-s ： 只找source源文件<br>-u ： 没有说明文档的文件<br>例如：<br>[root @redhat ~]# whereis passwd<br>passwd: /usr/bin/passwd /etc/passwd /usr/share/man/man1/passwd.1.gz /usr/share/man/man5/passwd.5.gz<br>将和passwd文件相关的文件都查找出来  </p>
+<p>[root @redhat ~]# whereis -b passwd<br>passwd: /usr/bin/passwd /etc/passwd<br>只将二进制文件查找出来  </p>
+<p>和find相比，whereis查找的速度非常快，这是因为linux系统会将系统内的所有文件都记录在一个 <font color="red">数据库文件 ( 参考资料1以及大多数文章中都是这样描述的，whereis会在一个数据库文件中查找，在参考资料2中找到这个数据库文件目录 /var/lib/slocate/slocate.db，我在服务器中并没有找到这个目录，原因应该是我没有装locate命令，那么whereis到底是怎么查找的呢？ 找了很久没有，从参考资料3中有一种个人比较相信的答案，从 /{bin,sbin,etc}   /usr{lib,bin,old,new,local,games,include,etc,src,man,sbin,X386,TeX,g++-include}<br>/usr/local/{X386,TeX,X11,include,lib,man,etc,bin,games,emacs} 中查找，也没有去看whereis的源码，如果有确定的可以交流一下</font> )中，当使用whereis和下面即将介绍的locate时，会从数据库中查找数据，而不是像find命令那样，通过遍历硬盘来查找，效率自然会很高。<br>但是 <font color="red">该数据库文件并不是实时更新，默认情况下时一星期更新一次，因此，我们在用whereis和locate 查找文件时，有时会找到已经被删除的数据，或者刚刚建立文件，却无法查找到，原因就是因为数据库文件没有被更新</font>。  </p>
+<h3 id="3、locate">3、locate</h3><p>语法：<br>[root@redhat ~]# locate 文件或者目录名称<br>例如：<br>[root@redhat ~]# locate passwd<br>/home/weblogic/bea/user_projects/domains/zhanggongzhe112/myserver/stage/_appsdir_DB_war/DB.war/jsp/as/user/passwd.jsp<br>/home/weblogic/bea/user_projects/domains/zhanggongzhe112/myserver/stage/_appsdir_admin_war/admin.war/jsp/platform/passwd.jsp<br>/lib/security/pam_unix_passwd.so<br>/lib/security/pam_passwdqc.so<br>/usr/include/rpcsvc/yppasswd.x<br>/usr/include/rpcsvc/yppasswd.h<br>/usr/lib/perl5/5.8.5/i386-linux-thread-multi/rpcsvc/yppasswd.ph<br>/usr/lib/kde3/kded_kpasswdserver.la<br>/usr/lib/kde3/kded_kpasswdserver.so<br>/usr/lib/ruby/1.8/webrick/httpauth/htpasswd.rb<br>/usr/bin/vncpasswd<br>/usr/bin/userpasswd<br>/usr/bin/yppasswd<br>…………  </p>
+<h3 id="4、find">4、find</h3><p>语法：<br>[root@redhat ~]# find 路径 参数<br>参数说明：<br>时间查找参数：<br>-atime n :将n<em>24小时内存取过的的文件列出来<br>-ctime n :将n</em>24小时内改变、新增的文件或者目录列出来<br>-mtime n :将n*24小时内修改过的文件或者目录列出来<br>-newer file ：把比file还要新的文件列出来<br>名称查找参数：<br>-gid n       ：寻找群组ID为n的文件<br>-group name  ：寻找群组名称为name的文件<br>-uid n       ：寻找拥有者ID为n的文件<br>-user name   ：寻找用户者名称为name的文件<br>-name file   ：寻找文件名为file的文件（可以使用通配符）<br>例 如：<br>[root@redhat ~]# find / -name zgz<br>/home/zgz<br>/home/zgz/zgz<br>/home/weblogic/bea/user_projects/domains/zgz<br>/home/oracle/product/10g/cfgtoollogs/dbca/zgz<br>/home/oracle/product/10g/cfgtoollogs/emca/zgz<br>/home/oracle/oradata/zgz  </p>
+<p>[root@redhat ~]# find / -name ‘<em> zgz </em>‘<br>/home/zgz<br>/home/zgz/zgz1<br>/home/zgz/zgzdirzgz<br>/home/zgz/zgz<br>/home/zgz/zgzdir<br>/home/weblogic/bea/user_projects/domains/zgz<br>/home/weblogic/bea/user_projects/domains/zgz/zgz.log00006<br>/home/weblogic/bea/user_projects/domains/zgz/zgz.log00002<br>/home/weblogic/bea/user_projects/domains/zgz/zgz.log00004<br>/home/weblogic/bea/user_projects/domains/zgz/zgz.log<br>/home/weblogic/bea/user_projects/domains/zgz/zgz.log00008<br>/home/weblogic/bea/user_projects/domains/zgz/zgz.log00005  </p>
+<p>当我们用whereis和locate无法查找到我们需要的文件时，可以使用find，但是find是在硬盘上遍历查找，因此非常消耗硬盘的资源，而且效率也非常低，因此建议大家优先使用whereis和locate。<br>locate 是在数据库里查找，数据库大至每天更新一次。<br>whereis 可以找到可执行命令和man page<br>find 就是根据条件查找文件。<br>which 可以找到可执行文件和别名(alias) </p>
+<h3 id="参考资料:">参考资料:</h3><ol>
+<li><p><a href="http://312788172.iteye.com/blog/730280" target="_blank" rel="external">http://312788172.iteye.com/blog/730280</a></p>
+</li>
+<li><p><a href="http://bbs.csdn.net/topics/320154707" target="_blank" rel="external">http://bbs.csdn.net/topics/320154707</a></p>
+</li>
+<li><p><a href="http://zhidao.baidu.com/question/122024300.html" target="_blank" rel="external">http://zhidao.baidu.com/question/122024300.html</a></p>
+</li>
 </ol>
 
       
@@ -272,18 +273,9 @@ Java中的内存有一块地址叫静态代码区所有静态类都是放在这�
     
 <nav id="article-nav">
   
-    <a href="/2015/05/20/关于java-lang-IllegalMonitorStateException/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          关于java.lang.IllegalMonitorStateException
-        
-      </div>
-    </a>
   
-  
-    <a href="/2015/05/16/关于判断素数的一些算法/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">关于判断素数的一些算法</div>
+    <a href="/2015/07/29/Java对管程的支持/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java对管程的支持</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -312,7 +304,7 @@ Java中的内存有一块地址叫静态代码区所有静态类都是放在这�
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="Java中的静态内部类" data-title="Java中的静态内部类" data-url="http://zhangtk.com/2015/05/19/Java中的静态内部类/"></div>
+	<div class="ds-thread" data-thread-key="Linux下which、whereis、locate、find命令的区别" data-title="Linux下which、whereis、locate、find命令的区别" data-url="http://zhangtk.com/2015/09/14/Linux下which、whereis、locate、find命令的区别/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
