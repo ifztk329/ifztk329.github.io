@@ -13,8 +13,8 @@
 <meta property="og:site_name" content="Zhangtk's Blog">
 <meta property="og:description" content="管程的概念
 管程 (英语：Moniters，也称为监视器) 是一种程序结构，结构内的多个子程序（对象或模块）形成的多个工作线程互斥访问共享资源。这些共享资源一般是硬件设备或一群变量。管程实现了在一个时间点，最多只有一个线程在执行管程的某个子程序。与那些通过修改数据结构实现互斥访问的并发程序设计相比，管程实现很大程度上简化了程序设计。管程提供了一种机制，线程可以临时放弃互斥访问，等待某些条件得到满足">
-<meta property="og:image" content="http://static.oschina.net/uploads/img/201507/29175430_u4tm.png">
-<meta property="og:updated_time" content="2015-07-31T07:27:27.557Z">
+<meta property="og:image" content="http://7xksnm.com1.z0.glb.clouddn.com/29175430_u4tm.png">
+<meta property="og:updated_time" content="2015-09-15T13:41:36.381Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java对管程的支持">
 <meta name="twitter:description" content="管程的概念
@@ -261,7 +261,7 @@
 </ul>
 <h3 id="隐式条件变量管程"><strong>隐式条件变量管程</strong></h3><p>Java程序设计语言中，每个对象都可以作为一个管程。需要互斥使用的方法必须明确标示关键字synchronized. 代码块也可以标示关键字synchronized.</p>
 <p><font color="red">不使用明确的条件变量</font>, Java的这种管程在<font color="red">入口队列</font>之外，使用单独的<font color="red">条件等待队列</font>. 所有等待的线程进入这个队列，<br>所有的notify与notify all操作也施加于这个队列。这种方法已经被其它程序设计语言使用，如C#.</p>
-<p><img src="http://static.oschina.net/uploads/img/201507/29175430_u4tm.png" alt="此处输入图片的描述"></p>
+<p><img src="http://7xksnm.com1.z0.glb.clouddn.com/29175430_u4tm.png" alt="此处输入图片的描述"></p>
 <p>  Java中的同步方法与其他经典管程有本质差别：<font color="red">Java没有内嵌的条件变量</font>。反之，<font color="red">Java提供了两个过程wait和notify</font> ，分别与sleep和wakeup等价，<br>不过，当它们在同步方法中使用时，它们不受竞争条件约束。理论上，方法wait可以被中断，它本身就是与中断有关的代码。Java需要显式表示异常处理。</p>
 <h3 id="参考资料:"><strong>参考资料:</strong></h3><ol>
 <li><a href="http://www.linuxidc.com/Linux/2014-09/106539.htm" target="_blank" rel="external">http://www.linuxidc.com/Linux/2014-09/106539.htm</a></li>
