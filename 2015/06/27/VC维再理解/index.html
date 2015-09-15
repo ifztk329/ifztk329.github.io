@@ -13,12 +13,12 @@ VC维被认为是数学和计算机科学中非常重要的定量化概念，它
 <meta property="og:site_name" content="Zhangtk's Blog">
 <meta property="og:description" content="看了台大的机器学习基石的课。讲了很多周的VC维的知识，对VC维的认识还是有点模糊，在这里梳理一下。
 VC维被认为是数学和计算机科学中非常重要的定量化概念，它可用来刻画分类系统的性能。在机器学习里我们常常看到这样的说法：一般而言, VC维越大, 学习能力就越强,学习也越复杂；可以通过VC维计算学习风险的上界。VC维的物理意义：如果我们将假设集合的数量|H|比作假设集合的自由度，那么VC维就是假设集合">
-<meta property="og:image" content="http://static.oschina.net/uploads/img/201506/27150629_q2Ej.png">
-<meta property="og:image" content="http://static.oschina.net/uploads/space/2015/0627/144802_fl1g_2243330.jpg">
-<meta property="og:image" content="http://static.oschina.net/uploads/space/2015/0627/141335_4wrq_2243330.jpg">
-<meta property="og:image" content="http://static.oschina.net/uploads/space/2015/0627/141453_ClaB_2243330.jpg">
-<meta property="og:image" content="http://static.oschina.net/uploads/space/2015/0627/141612_uM4y_2243330.jpg">
-<meta property="og:updated_time" content="2015-07-31T07:46:48.927Z">
+<meta property="og:image" content="http://7xksnm.com1.z0.glb.clouddn.com/VC1.png">
+<meta property="og:image" content="http://7xksnm.com1.z0.glb.clouddn.com/VC2.jpg">
+<meta property="og:image" content="http://7xksnm.com1.z0.glb.clouddn.com/VC3.jpg">
+<meta property="og:image" content="http://7xksnm.com1.z0.glb.clouddn.com/VC4.jpg">
+<meta property="og:image" content="http://7xksnm.com1.z0.glb.clouddn.com/VC5.jpg">
+<meta property="og:updated_time" content="2015-08-05T06:29:22.224Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="VC维再理解">
 <meta name="twitter:description" content="看了台大的机器学习基石的课。讲了很多周的VC维的知识，对VC维的认识还是有点模糊，在这里梳理一下。
@@ -235,20 +235,20 @@ VC维被认为是数学和计算机科学中非常重要的定量化概念，它
       
         <hr>
 <p>看了台大的机器学习基石的课。讲了很多周的VC维的知识，对VC维的认识还是有点模糊，在这里梳理一下。</p>
-<font color="red"><br>VC维被认为是数学和计算机科学中非常重要的定量化概念，它可用来刻画分类系统的性能。在机器学习里我们常常看到这样的说法：一般而言, VC维越大, 学习能力就越强,学习也越复杂；可以通过VC维计算学习风险的上界。<br><br>VC维的物理意义：如果我们将假设集合的数量|H|比作假设集合的自由度，那么VC维就是假设集合在做二元分类的有效的自由度，即这个假设空间能够产生多少Dichotomies的能力（VC维说的是，到什么时候，假设集合还能shatter，还能产生最多的Dichotomies）。<br></font><br><img src="http://static.oschina.net/uploads/img/201506/27150629_q2Ej.png" alt="此处输入图片的描述"><br><br><br>  VC维越大，Ein（随机抽样得到的样本错误率）越小，Ω(N,Η,δ)（模型复杂度）越大<br><br>VC维越小，Ω(N,Η,δ)越小，Ein越大<br><a id="more"></a><br><br>这里一个很直接的信息就是模型复杂度随着VC维的变大不断变大，呈正相关趋势。<br><br>因为VC维变大时，数据中可以shatter的点就变多了，那么假设空间的容量就变大了，如果是一个合理的学习算法的话，就有机会找到一个更好的假设，使得Ein更小。<br><br>而Eout呢？在一开始的时候，Eout随着Ein的下降也下降，但是到某个点，因为我们要付出的代价变大了，Eout开始上升，所以最好的Eout是在中间的某个位置。<br><br>这里得到一个重要的结论，VC维越大或者假设空间能力越强大，虽然可以使得训练误差很小，但不见得是最好的选择，因为要为模型复杂度付出代价。<br><br><br>现在，我们用VC维这个工具来描述。<br><br><em> 如果VC维很小，那么发生预测偏差很大的坏事情的可能性也就很小，那这有利于Ein(g)接近Eout(g)；但是，这是我们的假设空间（H）的表达能力受到了限制，这样Ein(g)可能就没有办法做到很小。
+<font color="red"><br>VC维被认为是数学和计算机科学中非常重要的定量化概念，它可用来刻画分类系统的性能。在机器学习里我们常常看到这样的说法：一般而言, VC维越大, 学习能力就越强,学习也越复杂；可以通过VC维计算学习风险的上界。<br><br>VC维的物理意义：如果我们将假设集合的数量|H|比作假设集合的自由度，那么VC维就是假设集合在做二元分类的有效的自由度，即这个假设空间能够产生多少Dichotomies的能力（VC维说的是，到什么时候，假设集合还能shatter，还能产生最多的Dichotomies）。<br></font><br><img src="http://7xksnm.com1.z0.glb.clouddn.com/VC1.png" alt="此处输入图片的描述"><br><br><br>  VC维越大，Ein（随机抽样得到的样本错误率）越小，Ω(N,Η,δ)（模型复杂度）越大<br><br>VC维越小，Ω(N,Η,δ)越小，Ein越大<br><a id="more"></a><br><br>这里一个很直接的信息就是模型复杂度随着VC维的变大不断变大，呈正相关趋势。<br><br>因为VC维变大时，数据中可以shatter的点就变多了，那么假设空间的容量就变大了，如果是一个合理的学习算法的话，就有机会找到一个更好的假设，使得Ein更小。<br><br>而Eout呢？在一开始的时候，Eout随着Ein的下降也下降，但是到某个点，因为我们要付出的代价变大了，Eout开始上升，所以最好的Eout是在中间的某个位置。<br><br>这里得到一个重要的结论，VC维越大或者假设空间能力越强大，虽然可以使得训练误差很小，但不见得是最好的选择，因为要为模型复杂度付出代价。<br><br><br>现在，我们用VC维这个工具来描述。<br><br><em> 如果VC维很小，那么发生预测偏差很大的坏事情的可能性也就很小，那这有利于Ein(g)接近Eout(g)；但是，这是我们的假设空间（H）的表达能力受到了限制，这样Ein(g)可能就没有办法做到很小。
 </em> 如果VC维很大，那么假设空间的表达能力很强，我们很有可能选到一个Ein(g)很小的假设，但是Ein(g)和Eout(g)之差很大的坏事情 发生的情况发生的可能性就变得很大，这样Ein(g)和Eout(g)根本不接近，我们就无法确定选择的假设在测试数据的时候表现的很好。<br><br>所以并不是VC维越大越好，一般我们考虑的都是在中间位置取值。<br><font color="red"><br>根据理论而言，样本复杂度大约是VC维的10000倍，而实际应用中，只需要VC维的10倍的量就够了。</font>
 
 <p>对一个指示函数集，如果存在h个样本能够被函数集中的函数按所有可能的2^h种形式分开，则称函数集能够把h个样本打散，函数集的VC维就是它能打散的最大样本数目h，若对任意数目的样本都有函数能将它们打散.则函数集的VC维是无穷大。有界实函数的VC维可以通过用一定的阈值将它转化成指示函数来定义。VC维反映了函数集的学习能力，VC维越大则学习机器越复杂，所以VC维又是学习机器复杂程度的一种衡量。</p>
 <font color="red"><br>这时，VC维变成了我们一个重要的选择，我们可以用VC维提供的信息来选择更好的模型和假设空间。</font>
 
 <p><strong>我们可以根据VC Bound公式，设发生坏事情的概率是δ，将其恒等变换可以得到训练误差和测试误差的差别ε。所以反过来讲，好事情（训练误差和测试误差的差别小于ε）发生时，Eout(g)被限制在一个范围内。这里根号内的式子定义为Ω(N,Η,δ)，称作模型复杂度,这个参数描述的意义是，我们的假设空间H有多么的强，使得我们的算法在泛化能力上需要付出多少代价。通俗的来讲，假设空间的容量越大，VC维越大，那么模型就越难学习。</strong></p>
-<p><img src="http://static.oschina.net/uploads/space/2015/0627/144802_fl1g_2243330.jpg" alt="此处输入图片的描述"></p>
+<p><img src="http://7xksnm.com1.z0.glb.clouddn.com/VC2.jpg" alt="此处输入图片的描述"></p>
 <p>  这里举个例子，来说明VC维</p>
-<p>　对于三个样本点的情况，下面的S1所有的标记方式是可以使用线性分类器进行分类的，因此其VC维至少为3<br>　<br>　<img src="http://static.oschina.net/uploads/space/2015/0627/141335_4wrq_2243330.jpg" alt="此处输入图片的描述"></p>
+<p>　对于三个样本点的情况，下面的S1所有的标记方式是可以使用线性分类器进行分类的，因此其VC维至少为3<br>　<br>　<img src="http://7xksnm.com1.z0.glb.clouddn.com/VC3.jpg" alt="此处输入图片的描述"></p>
 <p>  虽然存在下面这种情况的S2，其中一种标记方式无法用线性分类器分类</p>
-<p>  <img src="http://static.oschina.net/uploads/space/2015/0627/141453_ClaB_2243330.jpg" alt="此处输入图片的描述"></p>
+<p>  <img src="http://7xksnm.com1.z0.glb.clouddn.com/VC4.jpg" alt="此处输入图片的描述"></p>
 <p>  但这种情况并不影响，这是因为，上一种的S1中，我们的H={二维线性分类器}可以实现其所有可能标签情况的分类，这和S2不能用H分散无关。（所以说只要有一种情况能用H分散即可）</p>
-<p>而对于4个样本点的情况，我们的H不能实现其<font color="red">所有可能</font>标签情况的分类（这是经过证明的，过程不详）如下图中某个S和其中一种标签分配情况：<br><img src="http://static.oschina.net/uploads/space/2015/0627/141612_uM4y_2243330.jpg" alt="此处输入图片的描述"></p>
+<p>而对于4个样本点的情况，我们的H不能实现其<font color="red">所有可能</font>标签情况的分类（这是经过证明的，过程不详）如下图中某个S和其中一种标签分配情况：<br><img src="http://7xksnm.com1.z0.glb.clouddn.com/VC5.jpg" alt="此处输入图片的描述"></p>
 <p>  可见，H={二维线性分类器}的VC维是3。另外N维实数空间中线性分类器和线性实函数的VC维是n+1。对一些特殊的函数我们也明确知道其VC维，但并不是所有的。对于任意函数目前还没有很好的指导性方法来计算其VC维。</p>
 <p>如果某函数的VC维无穷大，也就意味着，任意多个点无论怎样标注都能将其打散。例如sin(ax)。它可以将任意多样本的任意标注情况精确分开，即在训练集上达到100%的分类正确率。</p>
 <h3 id="参考资料：">参考资料：</h3><ol>
